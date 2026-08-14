@@ -58,34 +58,43 @@ Auf der naechsten Seite steht eine URL der Form
 
 ## Schritt 3: Projekt hochladen
 
+> **Das Lokale ist schon erledigt.** Das Repository ist angelegt, alle Dateien
+> sind committet, der Branch heisst `main`, und die Zeilenenden sind auf LF
+> normalisiert (sonst waere der Workflow auf Linux gescheitert).
+> `git init`, `git add` und `git commit` brauchst du **nicht** mehr.
+
 Terminal im Projektordner oeffnen. Falls du unsicher bist: im Explorer in den
 Ordner `Bundesliga Tipps` gehen, Rechtsklick, **Git Bash Here**.
 
-Dann der Reihe nach:
-
-```bash
-git init
-```
-
-```bash
-git add -A
-```
-
-```bash
-git commit -m "Bundesliga Tippsystem"
-```
-
-```bash
-git branch -M main
-```
+Es fehlen genau zwei Befehle. Erst die Adresse deines Repositories eintragen:
 
 ```bash
 git remote add origin https://github.com/mariusseife-afk/bundesliga-tipps.git
 ```
 
+Dann hochladen:
+
 ```bash
 git push -u origin main
 ```
+
+Falls dein Benutzername oder Repositoryname anders lautet, korrigiere die
+Adresse mit:
+
+```bash
+git remote set-url origin https://github.com/DEINNAME/DEINREPO.git
+```
+
+Beim Push oeffnet sich ein Browserfenster zur GitHub-Anmeldung.
+Einmal bestaetigen, danach merkt sich Windows die Anmeldung.
+
+Wenn stattdessen nach Benutzername und Passwort gefragt wird: dein normales
+GitHub-Passwort funktioniert dort nicht mehr. Dann in GitHub unter
+**Settings > Developer settings > Personal access tokens > Tokens (classic)**
+ein Token mit dem Haken bei `repo` erzeugen und dieses statt des Passworts
+eingeben.
+
+Danach die Repository-Seite neu laden. Deine Dateien muessen da sein.
 
 Beim letzten Befehl oeffnet sich ein Browserfenster zur GitHub-Anmeldung.
 Einmal bestaetigen, danach merkt sich Windows die Anmeldung.
