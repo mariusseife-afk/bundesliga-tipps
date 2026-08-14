@@ -1,0 +1,12 @@
+{
+  "modus": "standard",
+  "vorlauf_stunden": 5.0,
+  "vorlauf_freitag_stunden": 72.0,
+  "vorlauf_spaet_stunden": 0.5,
+  "sofort_senden": false,
+  "geplant_fuer": null,
+  "telegram_bot": "",
+  "telegram_chat_id": "",
+  "github_repo": "",
+  "github_zweig": "main"
+}

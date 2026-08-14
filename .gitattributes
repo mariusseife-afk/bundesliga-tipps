@@ -1,0 +1,5 @@
+# Alles mit LF ins Repository. Der Workflow laeuft auf Linux, und Windows-
+# Zeilenenden lassen die Bash-Schritte dort mit \r-Fehlern scheitern.
+* text=auto eol=lf
+*.png binary
+*.jpg binary

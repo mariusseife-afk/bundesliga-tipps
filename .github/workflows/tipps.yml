@@ -1,0 +1,48 @@
+name: Bundesliga Tipps
+
+on:
+  schedule:
+    # alle 10 Minuten. GitHub haelt sich nicht exakt daran - unter Last kommen
+    # geplante Laeufe oft 5 bis 15 Minuten spaeter. Fuer den 30-Minuten-Modus
+    # ist das knapp, aber es reicht.
+    - cron: "*/10 * * * *"
+  workflow_dispatch:        # Knopf "Run workflow" in der Actions-Oberflaeche
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tipps
+  cancel-in-progress: false   # laufende Sendung nie mittendrin abbrechen
+
+jobs:
+  tippen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Tipps rechnen und verschicken
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        run: python run.py
+
+      - name: Geaenderten Stand zuruecklegen
+        run: |
+          git config user.name  "tipp-bot"
+          git config user.email "tipp-bot@users.noreply.github.com"
+          git add -A config.json state.json docs data
+          if git diff --staged --quiet; then
+            echo "Nichts geaendert."
+          else
+            git commit -m "Tipps aktualisiert: $(date -u '+%Y-%m-%d %H:%M') UTC"
+            # Zwischenzeitlich fremde Commits nicht ueberschreiben
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+            git push
+          fi
