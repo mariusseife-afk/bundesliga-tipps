@@ -1,9 +1,9 @@
 {
-  "stand": "2026-08-14T16:38:04.261368+02:00",
-  "stand_text": "14.08.2026, 16:38",
+  "stand": "2026-08-14T16:40:46.800422+02:00",
+  "stand_text": "14.08.2026, 16:40",
   "modus": "standard",
   "modus_text": "5 Stunden vorher",
-  "telegram_bot": "",
+  "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": []
 }

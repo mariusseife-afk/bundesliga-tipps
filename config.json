@@ -5,7 +5,7 @@
   "vorlauf_spaet_stunden": 0.5,
   "sofort_senden": false,
   "geplant_fuer": null,
-  "telegram_bot": "",
+  "telegram_bot": "paul_bundesliga_bot",
   "telegram_chat_id": "",
   "github_repo": "mariusseife-afk/bundesliga-tipps",
   "github_zweig": "main"

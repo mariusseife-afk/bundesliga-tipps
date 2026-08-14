@@ -78,12 +78,15 @@ Dann hochladen:
 git push -u origin main
 ```
 
-Falls dein Benutzername oder Repositoryname anders lautet, korrigiere die
-Adresse mit:
-
-```bash
-git remote set-url origin https://github.com/DEINNAME/DEINREPO.git
-```
+> **Diesen Befehl nur ausfuehren, wenn die Adresse oben falsch war.**
+> `DEINNAME` und `DEINREPO` sind Platzhalter und muessen ersetzt werden.
+> Wenn du ihn versehentlich unveraendert ausfuehrst, zeigt dein Git ins Leere
+> und der naechste Push scheitert. Reparatur: denselben Befehl nochmal, dann
+> mit der richtigen Adresse.
+>
+> ```bash
+> git remote set-url origin https://github.com/DEINNAME/DEINREPO.git
+> ```
 
 Beim Push oeffnet sich ein Browserfenster zur GitHub-Anmeldung.
 Einmal bestaetigen, danach merkt sich Windows die Anmeldung.
