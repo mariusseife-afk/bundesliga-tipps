@@ -2,10 +2,13 @@ name: Bundesliga Tipps
 
 on:
   schedule:
-    # alle 10 Minuten. GitHub haelt sich nicht exakt daran - unter Last kommen
-    # geplante Laeufe oft 5 bis 15 Minuten spaeter. Fuer den 30-Minuten-Modus
-    # ist das knapp, aber es reicht.
-    - cron: "*/10 * * * *"
+    # alle 15 Minuten. Bei */10 hat GitHub die Laeufe im Praxisbetrieb
+    # (23.-27.08.2026, 100 Laeufe gemessen) im Median erst nach 40 statt
+    # 10 Minuten gestartet, mit Ausreissern bis zu 10 Stunden Luecke.
+    # */15 entlastet die Warteschlange etwas; nichts geht dabei verloren,
+    # da run.py faellige Tipps ueber state.json ohnehin beim naechsten
+    # Lauf nachholt - es verzoegert sich hoechstens.
+    - cron: "*/15 * * * *"
   workflow_dispatch:        # Knopf "Run workflow" in der Actions-Oberflaeche
 
 permissions:
