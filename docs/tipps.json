@@ -1,25 +1,11 @@
 {
-  "stand": "2026-08-28T14:15:56.392751+02:00",
-  "stand_text": "28.08.2026, 14:15",
+  "stand": "2026-08-29T00:34:09.346898+02:00",
+  "stand_text": "29.08.2026, 00:34",
   "modus": "standard",
   "modus_text": "5 Stunden vorher",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-08-28T20:30:00+02:00",
-      "anstoss_text": "Fr 28.08. 20:30",
-      "home": "Bayern Munich",
-      "away": "Stuttgart",
-      "tipp": "3:1",
-      "ep": 1.058,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.782,
-      "p_remis": 0.127,
-      "p_aus": 0.091,
-      "p_exakt": 0.079
-    },
     {
       "anstoss": "2026-08-29T15:30:00+02:00",
       "anstoss_text": "Sa 29.08. 15:30",
