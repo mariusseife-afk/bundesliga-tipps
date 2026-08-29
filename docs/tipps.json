@@ -1,25 +1,11 @@
 {
-  "stand": "2026-08-29T17:35:17.086132+02:00",
-  "stand_text": "29.08.2026, 17:35",
+  "stand": "2026-08-29T20:54:31.440882+02:00",
+  "stand_text": "29.08.2026, 20:54",
   "modus": "standard",
   "modus_text": "5 Stunden vorher",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-08-29T18:30:00+02:00",
-      "anstoss_text": "Sa 29.08. 18:30",
-      "home": "Dortmund",
-      "away": "Hamburg",
-      "tipp": "1:0",
-      "ep": 1.067,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.717,
-      "p_remis": 0.174,
-      "p_aus": 0.109,
-      "p_exakt": 0.111
-    },
     {
       "anstoss": "2026-08-30T15:30:00+02:00",
       "anstoss_text": "So 30.08. 15:30",
@@ -40,13 +26,13 @@
       "home": "Augsburg",
       "away": "Schalke 04",
       "tipp": "2:1",
-      "ep": 0.698,
+      "ep": 0.688,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.438,
       "p_remis": 0.26,
       "p_aus": 0.302,
-      "p_exakt": 0.078
+      "p_exakt": 0.074
     }
   ]
 }
