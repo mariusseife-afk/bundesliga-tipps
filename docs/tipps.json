@@ -1,6 +1,6 @@
 {
-  "stand": "2026-08-29T00:34:09.346898+02:00",
-  "stand_text": "29.08.2026, 00:34",
+  "stand": "2026-08-29T05:54:00.527768+02:00",
+  "stand_text": "29.08.2026, 05:54",
   "modus": "standard",
   "modus_text": "5 Stunden vorher",
   "telegram_bot": "paul_bundesliga_bot",
@@ -110,13 +110,13 @@
       "home": "Augsburg",
       "away": "Schalke 04",
       "tipp": "2:1",
-      "ep": 0.698,
+      "ep": 0.688,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.438,
       "p_remis": 0.26,
       "p_aus": 0.302,
-      "p_exakt": 0.078
+      "p_exakt": 0.074
     }
   ]
 }
