@@ -1,6 +1,6 @@
 {
-  "stand": "2026-09-04T22:59:52.176769+02:00",
-  "stand_text": "04.09.2026, 22:59",
+  "stand": "2026-09-05T01:00:50.744340+02:00",
+  "stand_text": "05.09.2026, 01:00",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -30,7 +30,7 @@
       "p_heim": 0.654,
       "p_remis": 0.195,
       "p_aus": 0.152,
-      "p_exakt": 0.092
+      "p_exakt": 0.091
     },
     {
       "anstoss": "2026-09-05T15:30:00+02:00",
@@ -38,13 +38,13 @@
       "home": "M'gladbach",
       "away": "Elversberg",
       "tipp": "2:1",
-      "ep": 0.892,
+      "ep": 0.894,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.503,
       "p_remis": 0.248,
       "p_aus": 0.249,
-      "p_exakt": 0.112
+      "p_exakt": 0.113
     },
     {
       "anstoss": "2026-09-05T15:30:00+02:00",
@@ -52,7 +52,7 @@
       "home": "Paderborn",
       "away": "Freiburg",
       "tipp": "0:1",
-      "ep": 1.402,
+      "ep": 1.403,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.274,
@@ -80,13 +80,13 @@
       "home": "Schalke 04",
       "away": "Bayern Munich",
       "tipp": "0:6",
-      "ep": 1.131,
+      "ep": 1.128,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.069,
       "p_remis": 0.113,
       "p_aus": 0.818,
-      "p_exakt": 0.156
+      "p_exakt": 0.154
     },
     {
       "anstoss": "2026-09-06T15:30:00+02:00",
