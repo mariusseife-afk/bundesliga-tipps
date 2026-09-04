@@ -14,12 +14,6 @@ from tippsystem import formatiere_zeit
 
 TZ = ZoneInfo("Europe/Berlin")
 
-MODI = [
-    ("standard", "5 Stunden vorher", "Standard. Pro Spiel, fuenf Stunden vor Anpfiff."),
-    ("freitag", "Freitag frueh", "Alle Tipps des Spieltags auf einmal, sobald verfuegbar."),
-    ("spaet", "30 Minuten vorher", "Spaetester Stand, Aufstellungen sind eingepreist."),
-]
-
 CSS = """
 *{box-sizing:border-box}
 :root{
@@ -80,21 +74,13 @@ tr:last-child td{border-bottom:none}
 """
 
 
-def _knoepfe(bot, modus_aktiv):
+def _knoepfe(bot):
     if not bot:
         return ('<div class="hinweis">Kein Telegram-Bot hinterlegt. Trage in '
                 '<code>config.json</code> unter <code>telegram_bot</code> den '
-                'Bot-Namen ein, damit die Knoepfe funktionieren.</div>')
+                'Bot-Namen ein, damit der Knopf funktioniert.</div>')
     basis = f"https://t.me/{html.escape(bot)}?start="
-    teile = [f'<a class="knopf" href="{basis}jetzt">Tipps jetzt an Telegram senden</a>']
-    teile.append('<div style="height:14px"></div>')
-    for schluessel, titel, erklaerung in MODI:
-        an = " an" if schluessel == modus_aktiv else ""
-        haken = '<span class="haken">&#10003;</span>' if schluessel == modus_aktiv else ""
-        teile.append(
-            f'<a class="knopf neben{an}" href="{basis}modus_{schluessel}">'
-            f'<span>{titel}<small>{erklaerung}</small></span>{haken}</a>')
-    return "".join(teile)
+    return f'<a class="knopf" href="{basis}jetzt">Tipps jetzt an Telegram senden</a>'
 
 
 def _tabelle(spiele):
@@ -131,7 +117,6 @@ def daten(spiele, cfg, stand=None):
     geschrieben, damit eine anderswo gehostete Seite sie laden kann.
     """
     stand = stand or datetime.now(TZ)
-    modus = cfg.get("modus", "standard")
     raus = []
     for s in spiele:
         raus.append({
@@ -146,8 +131,6 @@ def daten(spiele, cfg, stand=None):
     return {
         "stand": stand.isoformat(),
         "stand_text": stand.strftime("%d.%m.%Y, %H:%M"),
-        "modus": modus,
-        "modus_text": next((t for k, t, _ in MODI if k == modus), modus),
         "telegram_bot": (cfg.get("telegram_bot") or "").lstrip("@"),
         "geplant_fuer": cfg.get("geplant_fuer"),
         "spiele": raus,
@@ -167,11 +150,9 @@ def baue(spiele, cfg, stand=None):
     """Baut die komplette Seite und gibt den HTML-Text zurueck."""
     stand = stand or datetime.now(TZ)
     bot = (cfg.get("telegram_bot") or "").lstrip("@")
-    modus = cfg.get("modus", "standard")
     getippt = [s for s in spiele if s.get("ep") is not None]
     summe = sum(s["ep"] for s in getippt)
 
-    modus_text = next((t for k, t, _ in MODI if k == modus), modus)
     geplant = cfg.get("geplant_fuer")
     geplant_html = ""
     if geplant:
@@ -185,7 +166,8 @@ def baue(spiele, cfg, stand=None):
 <div class="huelle">
   <h1>Bundesliga Tipps</h1>
   <div class="unterzeile">Stand {stand.strftime('%d.%m.%Y, %H:%M')} Uhr &middot;
-    Modus: {html.escape(modus_text)}</div>
+    frueh {cfg.get('vorlauf_frueh_stunden', 8):g}h vor Spieltag-Start,
+    kurz vorher {cfg.get('vorlauf_spaet_stunden', 1.5):g}h vor jedem Spiel</div>
 
   {geplant_html}
 
@@ -201,7 +183,7 @@ def baue(spiele, cfg, stand=None):
 
   <div class="karte">
     <h2>Steuerung</h2>
-    {_knoepfe(bot, modus)}
+    {_knoepfe(bot)}
   </div>
 
   <div class="fuss">
@@ -230,7 +212,7 @@ function zeigeFehler(text) {
   k.appendChild(el('div', 'hinweis', text));
 }
 
-function knoepfe(bot, modus) {
+function knoepfe(bot) {
   const box = document.getElementById('steuerung');
   box.textContent = '';
   if (!bot) {
@@ -241,16 +223,6 @@ function knoepfe(bot, modus) {
   const basis = 'https://t.me/' + encodeURIComponent(bot) + '?start=';
   const a = el('a', 'knopf', 'Tipps jetzt an Telegram senden');
   a.href = basis + 'jetzt'; box.appendChild(a);
-  box.appendChild(Object.assign(document.createElement('div'),
-    { style: 'height:14px' }));
-  for (const [k, titel, erkl] of MODI) {
-    const b = el('a', 'knopf neben' + (k === modus ? ' an' : ''));
-    b.href = basis + 'modus_' + k;
-    const s = el('span'); s.appendChild(document.createTextNode(titel));
-    s.appendChild(el('small', null, erkl)); b.appendChild(s);
-    if (k === modus) b.appendChild(el('span', 'haken', '\u2713'));
-    box.appendChild(b);
-  }
 }
 
 function tabelle(spiele) {
@@ -301,7 +273,7 @@ async function laden() {
     return;
   }
   document.getElementById('unterzeile').textContent =
-    'Stand ' + d.stand_text + ' Uhr \u00b7 Modus: ' + d.modus_text;
+    'Stand ' + d.stand_text + ' Uhr';
   const inhalt = document.getElementById('inhalt');
   inhalt.textContent = '';
   if (d.geplant_fuer) inhalt.appendChild(el('div', 'hinweis',
@@ -318,7 +290,7 @@ async function laden() {
     z.appendChild(el('span', null, txt)); zahlen.appendChild(z);
   }
   karte.appendChild(zahlen); inhalt.appendChild(karte);
-  knoepfe(d.telegram_bot, d.modus);
+  knoepfe(d.telegram_bot);
 }
 
 laden();
@@ -334,9 +306,6 @@ def baue_live(cfg):
     laedt. Einmal irgendwo veroeffentlichen, danach bleibt sie aktuell.
     """
     import json as _json
-    modi_js = "[" + ",".join(
-        "[%s,%s,%s]" % (_json.dumps(k), _json.dumps(t), _json.dumps(e))
-        for k, t, e in MODI) + "]"
     js = LIVE_JS % {"url": _json.dumps(json_url(cfg))}
     return f"""<meta charset="utf-8">
 <title>Bundesliga Tipps</title>
@@ -355,7 +324,6 @@ def baue_live(cfg):
   </div>
 </div>
 <script>
-const MODI = {modi_js};
 {js}
 </script>
 """

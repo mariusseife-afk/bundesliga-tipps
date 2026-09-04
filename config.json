@@ -1,8 +1,6 @@
 {
-  "modus": "standard",
-  "vorlauf_stunden": 5.0,
-  "vorlauf_freitag_stunden": 72.0,
-  "vorlauf_spaet_stunden": 0.5,
+  "vorlauf_frueh_stunden": 8.0,
+  "vorlauf_spaet_stunden": 1.5,
   "sofort_senden": false,
   "geplant_fuer": null,
   "telegram_bot": "paul_bundesliga_bot",

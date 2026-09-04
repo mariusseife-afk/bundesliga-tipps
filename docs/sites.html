@@ -72,7 +72,6 @@ tr:last-child td{border-bottom:none}
   </div>
 </div>
 <script>
-const MODI = [["standard","5 Stunden vorher","Standard. Pro Spiel, fuenf Stunden vor Anpfiff."],["freitag","Freitag frueh","Alle Tipps des Spieltags auf einmal, sobald verfuegbar."],["spaet","30 Minuten vorher","Spaetester Stand, Aufstellungen sind eingepreist."]];
 
 const URL_JSON = "https://raw.githubusercontent.com/mariusseife-afk/bundesliga-tipps/main/docs/tipps.json";
 const el = (t, k, x) => { const n = document.createElement(t);
@@ -84,7 +83,7 @@ function zeigeFehler(text) {
   k.appendChild(el('div', 'hinweis', text));
 }
 
-function knoepfe(bot, modus) {
+function knoepfe(bot) {
   const box = document.getElementById('steuerung');
   box.textContent = '';
   if (!bot) {
@@ -95,16 +94,6 @@ function knoepfe(bot, modus) {
   const basis = 'https://t.me/' + encodeURIComponent(bot) + '?start=';
   const a = el('a', 'knopf', 'Tipps jetzt an Telegram senden');
   a.href = basis + 'jetzt'; box.appendChild(a);
-  box.appendChild(Object.assign(document.createElement('div'),
-    { style: 'height:14px' }));
-  for (const [k, titel, erkl] of MODI) {
-    const b = el('a', 'knopf neben' + (k === modus ? ' an' : ''));
-    b.href = basis + 'modus_' + k;
-    const s = el('span'); s.appendChild(document.createTextNode(titel));
-    s.appendChild(el('small', null, erkl)); b.appendChild(s);
-    if (k === modus) b.appendChild(el('span', 'haken', '✓'));
-    box.appendChild(b);
-  }
 }
 
 function tabelle(spiele) {
@@ -155,7 +144,7 @@ async function laden() {
     return;
   }
   document.getElementById('unterzeile').textContent =
-    'Stand ' + d.stand_text + ' Uhr · Modus: ' + d.modus_text;
+    'Stand ' + d.stand_text + ' Uhr';
   const inhalt = document.getElementById('inhalt');
   inhalt.textContent = '';
   if (d.geplant_fuer) inhalt.appendChild(el('div', 'hinweis',
@@ -172,7 +161,7 @@ async function laden() {
     z.appendChild(el('span', null, txt)); zahlen.appendChild(z);
   }
   karte.appendChild(zahlen); inhalt.appendChild(karte);
-  knoepfe(d.telegram_bot, d.modus);
+  knoepfe(d.telegram_bot);
 }
 
 laden();

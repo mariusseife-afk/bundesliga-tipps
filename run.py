@@ -4,13 +4,26 @@ Ein Durchlauf des Tippsystems. Gedacht fuer einen Cronjob alle paar Minuten.
 Ablauf:
   1. Telegram-Befehle abholen und Konfiguration anpassen
   2. Historie und Spielplan laden, Tipps rechnen
-  3. pruefen, welche Spiele nach der eingestellten Vorlaufzeit faellig sind
-  4. faellige Tipps per Telegram schicken, Seite immer neu schreiben
+  3. pruefen, welche Nachrichten jetzt faellig sind (siehe unten)
+  4. faellige Nachrichten per Telegram schicken, Seite immer neu schreiben
+
+Feste Sende-Policy (zwei automatische Stufen, keine Modi mehr):
+  - "fruehzeitig": einmal pro Spieltag, sobald die eingestellte Vorlaufzeit vor
+    dem ERSTEN Spiel des Spieltags erreicht ist. Alle Spiele des Spieltags in
+    EINER Nachricht (nicht 9 einzelne).
+  - "kurz vorher": pro Spiel, sobald die eingestellte Vorlaufzeit vor DESSEN
+    Anpfiff erreicht ist (Quoten koennen sich seit der fruehen Nachricht
+    veraendert haben -> ggf. leicht anderer Tipp). Mehrere zeitgleiche Spiele
+    landen in EINER Nachricht, nicht einzeln.
+  Beide Schwellen bleiben nach dem Faellig-Werden dauerhaft erfuellt (bis zum
+  Anpfiff) - faellt ein GitHub-Actions-Lauf aus, holt der naechste es einfach
+  nach. Ist ein Spiel schon angepfiffen, wird dafuer nichts mehr verschickt
+  (weder Tipp noch Hinweis) - danach ist es fuer diesen Zweck uninteressant.
 
 Aufruf:
   python run.py               ein normaler Durchlauf
   python run.py --probe       rechnet und zeigt alles, sendet nichts, aendert nichts
-  python run.py --jetzt       schickt sofort alle anstehenden Tipps
+  python run.py --jetzt       schickt sofort eine Nachricht mit allen anstehenden Tipps
   python run.py --nur-seite   schreibt nur die HTML-Seite neu
 """
 
@@ -33,11 +46,18 @@ DATEN_JSON = os.path.join(DOCS, "tipps.json")
 SEITE_LIVE = os.path.join(DOCS, "sites.html")
 TZ = ZoneInfo("Europe/Berlin")
 
+# Ein Spieltag beginnt typischerweise Freitag/Samstag und endet Sonntag/Montag.
+# Alles, was innerhalb dieses Fensters ab dem ersten kommenden Anstoss liegt,
+# gilt als "derselbe Spieltag" fuer die gebuendelte Fruehnachricht.
+RUNDEN_FENSTER = timedelta(days=4)
+
 STANDARD_CONFIG = {
-    "modus": "standard",
-    "vorlauf_stunden": 5.0,
-    "vorlauf_freitag_stunden": 72.0,
-    "vorlauf_spaet_stunden": 0.5,
+    # Vorlauf vor dem ERSTEN Spiel des Spieltags fuer die gebuendelte
+    # Uebersichtsnachricht (z.B. 8h -> bei einem Freitag-20:30-Opener kommt sie
+    # Freitag 12:30 Uhr).
+    "vorlauf_frueh_stunden": 8.0,
+    # Vorlauf vor JEDEM einzelnen Spiel fuer den zweiten, evtl. aktualisierten Tipp.
+    "vorlauf_spaet_stunden": 1.5,
     "sofort_senden": False,
     "geplant_fuer": None,
     "telegram_bot": "",
@@ -109,34 +129,17 @@ def verarbeite_befehle(cfg, state):
             continue  # fremde Chats ignorieren
 
         t = text.strip()
-        # Deeplinks von der Seite kommen als "/start jetzt" bzw. "/start modus_spaet"
+        # Deeplinks von der Seite kommen als "/start jetzt"
         if t.startswith("/start"):
             rest = t[len("/start"):].strip()
-            t = "/" + rest.replace("modus_", "modus ") if rest else "/status"
+            t = "/" + rest if rest else "/status"
 
         wort = t.split()[0].lower().lstrip("/")
         arg = t[len(wort) + 1:].strip().lstrip("/").strip()
 
         if wort == "jetzt":
             cfg["sofort_senden"] = True
-            antworten.append((chat_id, "Alles klar, die Tipps kommen gleich."))
-        elif wort == "modus":
-            gueltig = {k for k, _, _ in page.MODI}
-            if arg in gueltig:
-                cfg["modus"] = arg
-                lead = _vorlauf(cfg, arg)
-                antworten.append((chat_id, f"Modus auf <b>{arg}</b> gestellt "
-                                           f"({lead:g} Stunden vor Anpfiff)."))
-            else:
-                antworten.append((chat_id, "Moegliche Modi: " + ", ".join(sorted(gueltig))))
-        elif wort == "vorlauf":
-            try:
-                cfg["vorlauf_stunden"] = float(arg.replace(",", "."))
-                cfg["modus"] = "standard"
-                antworten.append((chat_id, f"Vorlauf auf {cfg['vorlauf_stunden']:g} "
-                                           f"Stunden gesetzt."))
-            except ValueError:
-                antworten.append((chat_id, "Beispiel: /vorlauf 3"))
+            antworten.append((chat_id, "Alles klar, aktualisierte Tipps kommen gleich."))
         elif wort == "um":
             iso = _zeitpunkt(arg)
             if iso:
@@ -153,58 +156,60 @@ def verarbeite_befehle(cfg, state):
 
 
 HILFE = ("<b>Befehle</b>\n"
-         "/jetzt &mdash; alle anstehenden Tipps sofort schicken\n"
-         "/modus standard | freitag | spaet\n"
-         "/vorlauf 3 &mdash; Stunden vor Anpfiff (Modus standard)\n"
+         "/jetzt &mdash; sofort eine Nachricht mit allen anstehenden, "
+         "aktuell berechneten Tipps schicken\n"
          "/um 09:00 &mdash; einmalige Sendung zu diesem Zeitpunkt\n"
-         "/status &mdash; aktuelle Einstellung")
+         "/status &mdash; aktuelle Einstellung\n\n"
+         "Automatisch kommt sonst: einmal fruehzeitig eine Uebersicht des ganzen "
+         "Spieltags, dann pro Spiel nochmal kurz vor Anpfiff.")
 
 
 def _status(cfg):
-    zeilen = [f"<b>Modus:</b> {cfg['modus']} ({_vorlauf(cfg, cfg['modus']):g} h vor Anpfiff)"]
-    if cfg.get("geplant_fuer"):
-        zeilen.append(f"<b>Geplant:</b> {cfg['geplant_fuer'][:16].replace('T', ' ')} Uhr")
-    return "\n".join(zeilen)
+    return (f"<b>Automatik:</b> {cfg.get('vorlauf_frueh_stunden', 8.0):g}h vor dem "
+            f"ersten Spiel des Spieltags (gebuendelt), dann "
+            f"{cfg.get('vorlauf_spaet_stunden', 1.5):g}h vor jedem einzelnen Spiel.\n"
+            + (f"<b>Geplant:</b> {cfg['geplant_fuer'][:16].replace('T', ' ')} Uhr"
+               if cfg.get("geplant_fuer") else ""))
 
 
 # ---------------------------------------------------------------- Faelligkeit
 
-def _vorlauf(cfg, modus):
-    return float({
-        "standard": cfg.get("vorlauf_stunden", 5.0),
-        "freitag": cfg.get("vorlauf_freitag_stunden", 72.0),
-        "spaet": cfg.get("vorlauf_spaet_stunden", 0.5),
-    }.get(modus, cfg.get("vorlauf_stunden", 5.0)))
-
-
 def faellige(spiele, cfg, state, jetzt):
     """
-    Waehlt die Spiele aus, deren Tipp jetzt verschickt werden soll.
-    Ein Spiel wird erneut geschickt, wenn sich der Modus seit dem letzten Mal
-    geaendert hat - dann ist der Tipp auf einem neueren Datenstand.
+    Zwei automatische Stufen, unabhaengig voneinander pro Lauf geprueft:
+
+      fruehzeitig - einmal je Spieltag (Schluessel = Datum des ersten kommenden
+      Anstosses), sobald `vorlauf_frueh_stunden` vor diesem ersten Anstoss
+      erreicht ist. Enthaelt ALLE Spiele des Fensters (RUNDEN_FENSTER Tage ab
+      dem ersten Anstoss) in einer Nachricht.
+
+      spaet - je Spiel, sobald `vorlauf_spaet_stunden` vor dessen eigenem
+      Anstoss erreicht ist. Alle Spiele, die im selben Lauf faellig werden,
+      kommen zusammen in einer Nachricht.
+
+    Beide Schwellen bleiben erfuellt, bis das jeweilige Spiel anpfeift - ein
+    verspaeteter/ausgefallener Cron-Lauf holt eine faellige Nachricht beim
+    naechsten Mal einfach nach, nichts geht verloren. Ist der Anpfiff schon
+    vorbei, wird fuer dieses Spiel nichts mehr verschickt.
     """
-    modus = cfg.get("modus", "standard")
+    kommend = [s for s in spiele if s["anstoss"] > jetzt]
+
+    frueh = []
+    if kommend:
+        erster_anstoss = min(s["anstoss"] for s in kommend)
+        runde = erster_anstoss.date().isoformat()
+        frueh_gesendet = state.setdefault("frueh_gesendet", {})
+        schwelle_frueh = timedelta(hours=float(cfg.get("vorlauf_frueh_stunden", 8.0)))
+        if not frueh_gesendet.get(runde) and jetzt >= erster_anstoss - schwelle_frueh:
+            grenze = erster_anstoss + RUNDEN_FENSTER
+            frueh = [s for s in kommend if s["anstoss"] <= grenze]
+
     gesendet = state.get("gesendet", {})
-    schwelle = timedelta(hours=_vorlauf(cfg, modus))
+    schwelle_spaet = timedelta(hours=float(cfg.get("vorlauf_spaet_stunden", 1.5)))
+    spaet = [s for s in kommend
+             if not gesendet.get(spiel_id(s)) and (s["anstoss"] - jetzt) <= schwelle_spaet]
 
-    einmalig = bool(cfg.get("sofort_senden"))
-    if cfg.get("geplant_fuer"):
-        try:
-            if jetzt >= datetime.fromisoformat(cfg["geplant_fuer"]):
-                einmalig = True
-        except ValueError:
-            cfg["geplant_fuer"] = None
-
-    raus = []
-    for s in spiele:
-        if s["anstoss"] <= jetzt:
-            continue  # schon angepfiffen
-        sid = spiel_id(s)
-        if gesendet.get(sid) == modus and not einmalig:
-            continue
-        if einmalig or (s["anstoss"] - jetzt) <= schwelle:
-            raus.append(s)
-    return raus, einmalig
+    return frueh, spaet, (runde if kommend else None)
 
 
 # ---------------------------------------------------------------- Hauptlauf
@@ -215,7 +220,7 @@ def main():
     nur_seite = "--nur-seite" in argumente
 
     cfg = lade(CONFIG, STANDARD_CONFIG)
-    state = lade(STATE, {"gesendet": {}, "telegram_offset": 0})
+    state = lade(STATE, {"gesendet": {}, "frueh_gesendet": {}, "telegram_offset": 0})
     jetzt = datetime.now(TZ)
     antworten = []
 
@@ -224,8 +229,7 @@ def main():
     if "--jetzt" in argumente:
         cfg["sofort_senden"] = True
 
-    print(f"Lauf {jetzt:%d.%m.%Y %H:%M} - Modus {cfg['modus']} "
-          f"({_vorlauf(cfg, cfg['modus']):g} h Vorlauf)")
+    print(f"Lauf {jetzt:%d.%m.%Y %H:%M}")
 
     print("  Historie laden ...")
     historie = hole_historie()
@@ -248,36 +252,63 @@ def main():
               f"{s['away']:<16}  {s.get('tipp') or '--':>4}  "
               f"EP {s.get('ep') or 0:.2f}  [{s['quelle']}]")
 
-    dran, einmalig = faellige(spiele, cfg, state, jetzt) if spiele else ([], False)
+    manuell = bool(cfg.get("sofort_senden"))
+    if cfg.get("geplant_fuer"):
+        try:
+            if jetzt >= datetime.fromisoformat(cfg["geplant_fuer"]):
+                manuell = True
+        except ValueError:
+            cfg["geplant_fuer"] = None
+
+    if manuell:
+        anstehend = [s for s in spiele if s["anstoss"] > jetzt]
+        frueh, spaet, runde = [], [], None
+    else:
+        anstehend = []
+        frueh, spaet, runde = faellige(spiele, cfg, state, jetzt) if spiele else ([], [], None)
 
     if probe:
-        print(f"\n  Probelauf: {len(dran)} Spiele waeren jetzt faellig. "
-              f"Nichts gesendet, nichts gespeichert.")
+        print(f"\n  Probelauf: manuell={manuell}, fruehzeitig={len(frueh)}, "
+              f"kurz-vorher={len(spaet)}. Nichts gesendet, nichts gespeichert.")
     elif nur_seite:
         print("\n  Nur Seite neu geschrieben.")
     else:
         chat = cfg.get("telegram_chat_id")
         for ziel, text in antworten:
             notify.sende(text, ziel)
-        if dran:
-            titel = ("Bundesliga - alle anstehenden Tipps" if einmalig
-                     else f"Bundesliga - Tipps ({_vorlauf(cfg, cfg['modus']):g} h vor Anpfiff)")
-            if notify.sende(notify.formatiere(dran, titel), chat):
-                for s in dran:
-                    state.setdefault("gesendet", {})[spiel_id(s)] = cfg["modus"]
-                print(f"\n  {len(dran)} Tipps an Telegram geschickt.")
-            else:
-                print("\n  Senden fehlgeschlagen - Tipps bleiben faellig.")
-        else:
-            print("\n  Nichts faellig.")
 
-        if einmalig:
+        if manuell:
+            if notify.sende(notify.formatiere(anstehend, "Bundesliga - alle anstehenden Tipps"), chat):
+                print(f"\n  {len(anstehend)} Tipps auf Anfrage geschickt.")
+            else:
+                print("\n  Senden fehlgeschlagen.")
             cfg["sofort_senden"] = False
             cfg["geplant_fuer"] = None
+        else:
+            if frueh:
+                titel = "Bundesliga - Tipps zum Spieltag"
+                if notify.sende(notify.formatiere(frueh, titel), chat):
+                    state.setdefault("frueh_gesendet", {})[runde] = True
+                    print(f"\n  Fruehzeitige Uebersicht geschickt ({len(frueh)} Spiele).")
+                else:
+                    print("\n  Fruehzeitige Uebersicht fehlgeschlagen - bleibt faellig.")
+            if spaet:
+                titel = "Bundesliga - Tipps kurz vor Anpfiff"
+                if notify.sende(notify.formatiere(spaet, titel), chat):
+                    for s in spaet:
+                        state.setdefault("gesendet", {})[spiel_id(s)] = True
+                    print(f"\n  Tipps kurz vor Anpfiff geschickt ({len(spaet)} Spiele).")
+                else:
+                    print("\n  Tipps kurz vor Anpfiff fehlgeschlagen - bleiben faellig.")
+            if not frueh and not spaet:
+                print("\n  Nichts faellig.")
+
         # abgelaufene Eintraege aufraeumen
         grenze = (jetzt - timedelta(days=14)).date().isoformat()
         state["gesendet"] = {k: v for k, v in state.get("gesendet", {}).items()
                              if k[:10] >= grenze}
+        state["frueh_gesendet"] = {k: v for k, v in state.get("frueh_gesendet", {}).items()
+                                   if k >= grenze}
         schreibe(CONFIG, cfg)
         schreibe(STATE, state)
 
