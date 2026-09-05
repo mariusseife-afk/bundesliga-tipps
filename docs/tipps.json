@@ -1,6 +1,6 @@
 {
-  "stand": "2026-09-05T16:10:39.384873+02:00",
-  "stand_text": "05.09.2026, 16:10",
+  "stand": "2026-09-05T16:15:40.990160+02:00",
+  "stand_text": "05.09.2026, 16:15",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -10,13 +10,13 @@
       "home": "Schalke 04",
       "away": "Bayern Munich",
       "tipp": "0:6",
-      "ep": 1.128,
+      "ep": 1.131,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.069,
       "p_remis": 0.113,
       "p_aus": 0.818,
-      "p_exakt": 0.154
+      "p_exakt": 0.156
     },
     {
       "anstoss": "2026-09-06T15:30:00+02:00",
