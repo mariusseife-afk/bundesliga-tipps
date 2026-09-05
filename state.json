@@ -9,6 +9,8 @@
     "2026-08-30|Freiburg|Werder Bremen": "standard",
     "2026-08-30|Augsburg|Schalke 04": "standard"
   },
-  "frueh_gesendet": {},
+  "frueh_gesendet": {
+    "2026-09-05": true
+  },
   "telegram_offset": 276378780
 }
