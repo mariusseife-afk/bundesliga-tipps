@@ -2,13 +2,19 @@ name: Bundesliga Tipps
 
 on:
   schedule:
-    # alle 15 Minuten. Bei */10 hat GitHub die Laeufe im Praxisbetrieb
-    # (23.-27.08.2026, 100 Laeufe gemessen) im Median erst nach 40 statt
-    # 10 Minuten gestartet, mit Ausreissern bis zu 10 Stunden Luecke.
-    # */15 entlastet die Warteschlange etwas; nichts geht dabei verloren,
-    # da run.py faellige Tipps ueber state.json ohnehin beim naechsten
-    # Lauf nachholt - es verzoegert sich hoechstens.
+    # GitHubs eigener schedule-Trigger ist auf oeffentlichen Repos nicht
+    # verlaesslich (04.-04.09.2026 gemessen: Median 88 statt 15 Minuten,
+    # groesste Luecke 819 Minuten - das liess Tipps zu spaet oder gar nicht
+    # ankommen). Bleibt trotzdem als kostenloses Backup aktiv, ersetzt aber
+    # NICHT den externen Trigger unten - siehe repository_dispatch.
     - cron: "*/15 * * * *"
+  repository_dispatch:
+    # Externer Cron-Dienst (z.B. cron-job.org) ruft alle paar Minuten
+    #   POST https://api.github.com/repos/<repo>/dispatches
+    #   Body: {"event_type": "tipp-lauf"}
+    # mit einem Personal-Access-Token auf. Das ist der eigentliche,
+    # zuverlaessige Trigger - siehe ANLEITUNG_EXTERNER_CRON.md.
+    types: [tipp-lauf]
   workflow_dispatch:        # Knopf "Run workflow" in der Actions-Oberflaeche
 
 permissions:
