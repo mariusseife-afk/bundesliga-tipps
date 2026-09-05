@@ -7,7 +7,12 @@
     "2026-08-29|Union Berlin|Ein Frankfurt": "standard",
     "2026-08-29|Dortmund|Hamburg": "standard",
     "2026-08-30|Freiburg|Werder Bremen": "standard",
-    "2026-08-30|Augsburg|Schalke 04": "standard"
+    "2026-08-30|Augsburg|Schalke 04": "standard",
+    "2026-09-05|Hoffenheim|Dortmund": true,
+    "2026-09-05|Leverkusen|Union Berlin": true,
+    "2026-09-05|M'gladbach|Elversberg": true,
+    "2026-09-05|Paderborn|Freiburg": true,
+    "2026-09-05|Werder Bremen|RB Leipzig": true
   },
   "frueh_gesendet": {
     "2026-09-05": true
