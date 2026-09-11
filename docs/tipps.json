@@ -1,23 +1,9 @@
 {
-  "stand": "2026-09-11T20:25:35.387851+02:00",
-  "stand_text": "11.09.2026, 20:25",
+  "stand": "2026-09-11T20:30:57.032282+02:00",
+  "stand_text": "11.09.2026, 20:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-09-11T20:30:00+02:00",
-      "anstoss_text": "Fr 11.09. 20:30",
-      "home": "Union Berlin",
-      "away": "Schalke 04",
-      "tipp": "0:1",
-      "ep": 0.99,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.399,
-      "p_remis": 0.266,
-      "p_aus": 0.335,
-      "p_exakt": 0.323
-    },
     {
       "anstoss": "2026-09-12T15:30:00+02:00",
       "anstoss_text": "Sa 12.09. 15:30",
@@ -38,13 +24,13 @@
       "home": "Dortmund",
       "away": "Paderborn",
       "tipp": "1:0",
-      "ep": 2.266,
+      "ep": 2.267,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.761,
       "p_remis": 0.146,
       "p_aus": 0.093,
-      "p_exakt": 0.752
+      "p_exakt": 0.753
     },
     {
       "anstoss": "2026-09-12T15:30:00+02:00",
@@ -122,13 +108,13 @@
       "home": "Elversberg",
       "away": "Bayern Munich",
       "tipp": "2:3",
-      "ep": 1.14,
+      "ep": 1.142,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.073,
       "p_remis": 0.112,
       "p_aus": 0.814,
-      "p_exakt": 0.08
+      "p_exakt": 0.081
     }
   ]
 }
