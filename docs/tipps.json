@@ -1,6 +1,6 @@
 {
-  "stand": "2026-09-12T10:15:41.384380+02:00",
-  "stand_text": "12.09.2026, 10:15",
+  "stand": "2026-09-12T10:20:40.258067+02:00",
+  "stand_text": "12.09.2026, 10:20",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -24,13 +24,13 @@
       "home": "Dortmund",
       "away": "Paderborn",
       "tipp": "1:0",
-      "ep": 2.266,
+      "ep": 2.267,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.761,
       "p_remis": 0.146,
       "p_aus": 0.093,
-      "p_exakt": 0.752
+      "p_exakt": 0.753
     },
     {
       "anstoss": "2026-09-12T15:30:00+02:00",
@@ -108,13 +108,13 @@
       "home": "Elversberg",
       "away": "Bayern Munich",
       "tipp": "2:3",
-      "ep": 1.14,
+      "ep": 1.142,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.073,
       "p_remis": 0.112,
       "p_aus": 0.814,
-      "p_exakt": 0.08
+      "p_exakt": 0.081
     }
   ]
 }
