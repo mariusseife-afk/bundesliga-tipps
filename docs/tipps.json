@@ -1,6 +1,6 @@
 {
-  "stand": "2026-09-12T18:01:05.093648+02:00",
-  "stand_text": "12.09.2026, 18:01",
+  "stand": "2026-09-12T18:05:32.309278+02:00",
+  "stand_text": "12.09.2026, 18:05",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -38,13 +38,13 @@
       "home": "Elversberg",
       "away": "Bayern Munich",
       "tipp": "2:3",
-      "ep": 1.14,
+      "ep": 1.142,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.073,
       "p_remis": 0.112,
       "p_aus": 0.814,
-      "p_exakt": 0.08
+      "p_exakt": 0.081
     }
   ]
 }
