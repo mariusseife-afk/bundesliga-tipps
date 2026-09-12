@@ -1,23 +1,9 @@
 {
-  "stand": "2026-09-12T18:25:34.283800+02:00",
-  "stand_text": "12.09.2026, 18:25",
+  "stand": "2026-09-12T18:30:52.590742+02:00",
+  "stand_text": "12.09.2026, 18:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-09-12T18:30:00+02:00",
-      "anstoss_text": "Sa 12.09. 18:30",
-      "home": "FC Koln",
-      "away": "Werder Bremen",
-      "tipp": "2:1",
-      "ep": 0.724,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.453,
-      "p_remis": 0.252,
-      "p_aus": 0.295,
-      "p_exakt": 0.081
-    },
     {
       "anstoss": "2026-09-13T15:30:00+02:00",
       "anstoss_text": "So 13.09. 15:30",
