@@ -15,7 +15,12 @@
     "2026-09-05|Werder Bremen|RB Leipzig": true,
     "2026-09-05|Schalke 04|Bayern Munich": true,
     "2026-09-06|Hamburg|Mainz": true,
-    "2026-09-11|Union Berlin|Schalke 04": true
+    "2026-09-11|Union Berlin|Schalke 04": true,
+    "2026-09-12|Augsburg|Leverkusen": true,
+    "2026-09-12|Dortmund|Paderborn": true,
+    "2026-09-12|Freiburg|M'gladbach": true,
+    "2026-09-12|Hoffenheim|Stuttgart": true,
+    "2026-09-12|Mainz|Ein Frankfurt": true
   },
   "frueh_gesendet": {
     "2026-09-05": true,
