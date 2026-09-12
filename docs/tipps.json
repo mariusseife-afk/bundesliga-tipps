@@ -1,7 +1,50 @@
 {
-  "stand": "2026-09-12T15:25:36.758725+02:00",
-  "stand_text": "12.09.2026, 15:25",
+  "stand": "2026-09-12T15:30:53.956281+02:00",
+  "stand_text": "12.09.2026, 15:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
-  "spiele": []
+  "spiele": [
+    {
+      "anstoss": "2026-09-12T18:30:00+02:00",
+      "anstoss_text": "Sa 12.09. 18:30",
+      "home": "FC Koln",
+      "away": "Werder Bremen",
+      "tipp": "2:1",
+      "ep": 0.724,
+      "quelle": "modell+markt",
+      "hinweis": "",
+      "p_heim": 0.453,
+      "p_remis": 0.252,
+      "p_aus": 0.295,
+      "p_exakt": 0.081
+    },
+    {
+      "anstoss": "2026-09-13T15:30:00+02:00",
+      "anstoss_text": "So 13.09. 15:30",
+      "home": "RB Leipzig",
+      "away": "Hamburg",
+      "tipp": "1:0",
+      "ep": 1.066,
+      "quelle": "modell+markt",
+      "hinweis": "",
+      "p_heim": 0.698,
+      "p_remis": 0.178,
+      "p_aus": 0.124,
+      "p_exakt": 0.111
+    },
+    {
+      "anstoss": "2026-09-13T17:30:00+02:00",
+      "anstoss_text": "So 13.09. 17:30",
+      "home": "Elversberg",
+      "away": "Bayern Munich",
+      "tipp": "2:3",
+      "ep": 1.14,
+      "quelle": "modell+markt",
+      "hinweis": "",
+      "p_heim": 0.073,
+      "p_remis": 0.112,
+      "p_aus": 0.814,
+      "p_exakt": 0.08
+    }
+  ]
 }
