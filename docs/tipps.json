@@ -1,23 +1,9 @@
 {
-  "stand": "2026-09-18T20:25:30.479924+02:00",
-  "stand_text": "18.09.2026, 20:25",
+  "stand": "2026-09-18T20:30:50.981545+02:00",
+  "stand_text": "18.09.2026, 20:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-09-18T20:30:00+02:00",
-      "anstoss_text": "Fr 18.09. 20:30",
-      "home": "Bayern Munich",
-      "away": "Union Berlin",
-      "tipp": "4:1",
-      "ep": 1.174,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.914,
-      "p_remis": 0.057,
-      "p_aus": 0.029,
-      "p_exakt": 0.074
-    },
     {
       "anstoss": "2026-09-19T15:30:00+02:00",
       "anstoss_text": "Sa 19.09. 15:30",
