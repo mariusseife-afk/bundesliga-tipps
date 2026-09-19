@@ -1,23 +1,9 @@
 {
-  "stand": "2026-09-19T18:25:37.446572+02:00",
-  "stand_text": "19.09.2026, 18:25",
+  "stand": "2026-09-19T18:30:49.168664+02:00",
+  "stand_text": "19.09.2026, 18:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-09-19T18:30:00+02:00",
-      "anstoss_text": "Sa 19.09. 18:30",
-      "home": "Stuttgart",
-      "away": "Dortmund",
-      "tipp": "2:1",
-      "ep": 0.701,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.398,
-      "p_remis": 0.25,
-      "p_aus": 0.353,
-      "p_exakt": 0.092
-    },
     {
       "anstoss": "2026-09-20T15:30:00+02:00",
       "anstoss_text": "So 20.09. 15:30",
