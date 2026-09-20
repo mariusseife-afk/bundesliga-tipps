@@ -1,7 +1,50 @@
 {
-  "stand": "2026-09-20T06:15:41.714347+02:00",
-  "stand_text": "20.09.2026, 06:15",
+  "stand": "2026-09-20T06:20:43.173266+02:00",
+  "stand_text": "20.09.2026, 06:20",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
-  "spiele": []
+  "spiele": [
+    {
+      "anstoss": "2026-09-20T15:30:00+02:00",
+      "anstoss_text": "So 20.09. 15:30",
+      "home": "Leverkusen",
+      "away": "RB Leipzig",
+      "tipp": "2:1",
+      "ep": 0.775,
+      "quelle": "modell+markt",
+      "hinweis": "",
+      "p_heim": 0.476,
+      "p_remis": 0.232,
+      "p_aus": 0.292,
+      "p_exakt": 0.091
+    },
+    {
+      "anstoss": "2026-09-20T17:30:00+02:00",
+      "anstoss_text": "So 20.09. 17:30",
+      "home": "Schalke 04",
+      "away": "Elversberg",
+      "tipp": "1:0",
+      "ep": 1.349,
+      "quelle": "modell+markt",
+      "hinweis": "",
+      "p_heim": 0.463,
+      "p_remis": 0.255,
+      "p_aus": 0.282,
+      "p_exakt": 0.429
+    },
+    {
+      "anstoss": "2026-09-20T19:30:00+02:00",
+      "anstoss_text": "So 20.09. 19:30",
+      "home": "Paderborn",
+      "away": "Hoffenheim",
+      "tipp": "0:1",
+      "ep": 1.693,
+      "quelle": "modell+markt",
+      "hinweis": "",
+      "p_heim": 0.217,
+      "p_remis": 0.216,
+      "p_aus": 0.567,
+      "p_exakt": 0.563
+    }
+  ]
 }
