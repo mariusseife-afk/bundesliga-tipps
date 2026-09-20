@@ -1,23 +1,9 @@
 {
-  "stand": "2026-09-20T17:25:32.942728+02:00",
-  "stand_text": "20.09.2026, 17:25",
+  "stand": "2026-09-20T17:30:48.947886+02:00",
+  "stand_text": "20.09.2026, 17:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-09-20T17:30:00+02:00",
-      "anstoss_text": "So 20.09. 17:30",
-      "home": "Schalke 04",
-      "away": "Elversberg",
-      "tipp": "1:0",
-      "ep": 1.349,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.463,
-      "p_remis": 0.255,
-      "p_aus": 0.282,
-      "p_exakt": 0.429
-    },
     {
       "anstoss": "2026-09-20T19:30:00+02:00",
       "anstoss_text": "So 20.09. 19:30",
