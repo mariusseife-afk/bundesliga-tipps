@@ -1,22 +1,7 @@
 {
-  "stand": "2026-09-20T19:25:32.651623+02:00",
-  "stand_text": "20.09.2026, 19:25",
+  "stand": "2026-09-20T19:30:48.318778+02:00",
+  "stand_text": "20.09.2026, 19:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
-  "spiele": [
-    {
-      "anstoss": "2026-09-20T19:30:00+02:00",
-      "anstoss_text": "So 20.09. 19:30",
-      "home": "Paderborn",
-      "away": "Hoffenheim",
-      "tipp": "0:1",
-      "ep": 1.693,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.217,
-      "p_remis": 0.216,
-      "p_aus": 0.567,
-      "p_exakt": 0.563
-    }
-  ]
+  "spiele": []
 }
