@@ -1,6 +1,5 @@
 {
   "gesendet": {
-    "2026-09-06|Hamburg|Mainz": true,
     "2026-09-11|Union Berlin|Schalke 04": true,
     "2026-09-12|Augsburg|Leverkusen": true,
     "2026-09-12|Dortmund|Paderborn": true,
@@ -21,7 +20,6 @@
     "2026-09-20|Paderborn|Hoffenheim": true
   },
   "frueh_gesendet": {
-    "2026-09-06": true,
     "2026-09-11": true,
     "2026-09-12": true,
     "2026-09-13": true,
