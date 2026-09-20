@@ -1,23 +1,9 @@
 {
-  "stand": "2026-09-20T15:25:38.175082+02:00",
-  "stand_text": "20.09.2026, 15:25",
+  "stand": "2026-09-20T15:30:49.275849+02:00",
+  "stand_text": "20.09.2026, 15:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-09-20T15:30:00+02:00",
-      "anstoss_text": "So 20.09. 15:30",
-      "home": "Leverkusen",
-      "away": "RB Leipzig",
-      "tipp": "2:1",
-      "ep": 0.775,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.476,
-      "p_remis": 0.232,
-      "p_aus": 0.292,
-      "p_exakt": 0.091
-    },
     {
       "anstoss": "2026-09-20T17:30:00+02:00",
       "anstoss_text": "So 20.09. 17:30",
