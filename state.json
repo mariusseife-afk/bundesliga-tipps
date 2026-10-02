@@ -1,6 +1,5 @@
 {
   "gesendet": {
-    "2026-09-18|Bayern Munich|Union Berlin": true,
     "2026-09-19|Ein Frankfurt|Freiburg": true,
     "2026-09-19|Hamburg|FC Koln": true,
     "2026-09-19|M'gladbach|Mainz": true,
@@ -11,7 +10,6 @@
     "2026-09-20|Paderborn|Hoffenheim": true
   },
   "frueh_gesendet": {
-    "2026-09-18": true,
     "2026-09-19": true,
     "2026-09-20": true
   },
