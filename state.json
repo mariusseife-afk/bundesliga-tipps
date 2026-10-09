@@ -1,5 +1,7 @@
 {
-  "gesendet": {},
+  "gesendet": {
+    "2026-10-09|Dortmund|Werder Bremen": true
+  },
   "frueh_gesendet": {
     "2026-10-09": true
   },
