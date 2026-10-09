@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-09T20:15:44.276499+02:00",
-  "stand_text": "09.10.2026, 20:15",
+  "stand": "2026-10-09T20:20:39.579397+02:00",
+  "stand_text": "09.10.2026, 20:20",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -80,13 +80,13 @@
       "home": "Union Berlin",
       "away": "Elversberg",
       "tipp": "2:1",
-      "ep": 0.696,
+      "ep": 0.695,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.409,
       "p_remis": 0.254,
       "p_aus": 0.338,
-      "p_exakt": 0.074
+      "p_exakt": 0.073
     },
     {
       "anstoss": "2026-10-10T18:30:00+02:00",
@@ -122,13 +122,13 @@
       "home": "Freiburg",
       "away": "Schalke 04",
       "tipp": "3:0",
-      "ep": 0.814,
+      "ep": 0.811,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.571,
       "p_remis": 0.235,
       "p_aus": 0.194,
-      "p_exakt": 0.121
+      "p_exakt": 0.119
     }
   ]
 }
