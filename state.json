@@ -1,5 +1,7 @@
 {
   "gesendet": {},
-  "frueh_gesendet": {},
+  "frueh_gesendet": {
+    "2026-10-09": true
+  },
   "telegram_offset": 276378790
 }
