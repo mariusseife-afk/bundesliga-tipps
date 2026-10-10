@@ -1,79 +1,9 @@
 {
-  "stand": "2026-10-10T15:25:31.286048+02:00",
-  "stand_text": "10.10.2026, 15:25",
+  "stand": "2026-10-10T15:30:54.475552+02:00",
+  "stand_text": "10.10.2026, 15:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-10-10T15:30:00+02:00",
-      "anstoss_text": "Sa 10.10. 15:30",
-      "home": "Augsburg",
-      "away": "Bayern Munich",
-      "tipp": "1:3",
-      "ep": 1.088,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.085,
-      "p_remis": 0.115,
-      "p_aus": 0.8,
-      "p_exakt": 0.084
-    },
-    {
-      "anstoss": "2026-10-10T15:30:00+02:00",
-      "anstoss_text": "Sa 10.10. 15:30",
-      "home": "Hoffenheim",
-      "away": "Hamburg",
-      "tipp": "2:1",
-      "ep": 1.061,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.665,
-      "p_remis": 0.188,
-      "p_aus": 0.147,
-      "p_exakt": 0.119
-    },
-    {
-      "anstoss": "2026-10-10T15:30:00+02:00",
-      "anstoss_text": "Sa 10.10. 15:30",
-      "home": "Mainz",
-      "away": "Leverkusen",
-      "tipp": "1:2",
-      "ep": 0.735,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.325,
-      "p_remis": 0.244,
-      "p_aus": 0.431,
-      "p_exakt": 0.091
-    },
-    {
-      "anstoss": "2026-10-10T15:30:00+02:00",
-      "anstoss_text": "Sa 10.10. 15:30",
-      "home": "Paderborn",
-      "away": "Stuttgart",
-      "tipp": "0:1",
-      "ep": 1.767,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.201,
-      "p_remis": 0.206,
-      "p_aus": 0.593,
-      "p_exakt": 0.587
-    },
-    {
-      "anstoss": "2026-10-10T15:30:00+02:00",
-      "anstoss_text": "Sa 10.10. 15:30",
-      "home": "Union Berlin",
-      "away": "Elversberg",
-      "tipp": "2:1",
-      "ep": 0.696,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.409,
-      "p_remis": 0.254,
-      "p_aus": 0.338,
-      "p_exakt": 0.074
-    },
     {
       "anstoss": "2026-10-10T18:30:00+02:00",
       "anstoss_text": "Sa 10.10. 18:30",
@@ -108,13 +38,13 @@
       "home": "Freiburg",
       "away": "Schalke 04",
       "tipp": "3:0",
-      "ep": 0.814,
+      "ep": 0.811,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.571,
       "p_remis": 0.235,
       "p_aus": 0.194,
-      "p_exakt": 0.121
+      "p_exakt": 0.119
     }
   ]
 }
