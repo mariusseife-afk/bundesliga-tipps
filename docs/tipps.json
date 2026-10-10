@@ -1,23 +1,9 @@
 {
-  "stand": "2026-10-10T18:25:33.171517+02:00",
-  "stand_text": "10.10.2026, 18:25",
+  "stand": "2026-10-10T18:30:48.868079+02:00",
+  "stand_text": "10.10.2026, 18:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-10-10T18:30:00+02:00",
-      "anstoss_text": "Sa 10.10. 18:30",
-      "home": "RB Leipzig",
-      "away": "Ein Frankfurt",
-      "tipp": "2:1",
-      "ep": 0.891,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.604,
-      "p_remis": 0.198,
-      "p_aus": 0.198,
-      "p_exakt": 0.086
-    },
     {
       "anstoss": "2026-10-11T15:30:00+02:00",
       "anstoss_text": "So 11.10. 15:30",
