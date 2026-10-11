@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-11T02:00:56.336568+02:00",
-  "stand_text": "11.10.2026, 02:00",
+  "stand": "2026-10-11T02:05:34.042797+02:00",
+  "stand_text": "11.10.2026, 02:05",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -24,13 +24,13 @@
       "home": "Freiburg",
       "away": "Schalke 04",
       "tipp": "3:0",
-      "ep": 0.814,
+      "ep": 0.811,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.571,
       "p_remis": 0.235,
       "p_aus": 0.194,
-      "p_exakt": 0.121
+      "p_exakt": 0.119
     }
   ]
 }
