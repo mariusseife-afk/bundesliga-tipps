@@ -1,23 +1,9 @@
 {
-  "stand": "2026-10-11T15:25:29.216285+02:00",
-  "stand_text": "11.10.2026, 15:25",
+  "stand": "2026-10-11T15:30:43.967396+02:00",
+  "stand_text": "11.10.2026, 15:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-10-11T15:30:00+02:00",
-      "anstoss_text": "So 11.10. 15:30",
-      "home": "FC Koln",
-      "away": "M'gladbach",
-      "tipp": "2:1",
-      "ep": 0.79,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.468,
-      "p_remis": 0.241,
-      "p_aus": 0.291,
-      "p_exakt": 0.096
-    },
     {
       "anstoss": "2026-10-11T17:30:00+02:00",
       "anstoss_text": "So 11.10. 17:30",
