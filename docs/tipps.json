@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-16T19:25:31.467767+02:00",
-  "stand_text": "16.10.2026, 19:25",
+  "stand": "2026-10-16T19:30:52.347267+02:00",
+  "stand_text": "16.10.2026, 19:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -38,7 +38,7 @@
       "home": "Hamburg",
       "away": "Stuttgart",
       "tipp": "1:2",
-      "ep": 0.853,
+      "ep": 0.854,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.245,
@@ -80,7 +80,7 @@
       "home": "Werder Bremen",
       "away": "Paderborn",
       "tipp": "1:0",
-      "ep": 1.583,
+      "ep": 1.582,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.53,
