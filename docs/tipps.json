@@ -1,23 +1,9 @@
 {
-  "stand": "2026-10-16T20:25:43.044534+02:00",
-  "stand_text": "16.10.2026, 20:25",
+  "stand": "2026-10-16T20:30:54.581788+02:00",
+  "stand_text": "16.10.2026, 20:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-10-16T20:30:00+02:00",
-      "anstoss_text": "Fr 16.10. 20:30",
-      "home": "Ein Frankfurt",
-      "away": "FC Koln",
-      "tipp": "2:1",
-      "ep": 0.77,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.508,
-      "p_remis": 0.225,
-      "p_aus": 0.266,
-      "p_exakt": 0.077
-    },
     {
       "anstoss": "2026-10-17T15:30:00+02:00",
       "anstoss_text": "Sa 17.10. 15:30",
@@ -38,7 +24,7 @@
       "home": "Hamburg",
       "away": "Stuttgart",
       "tipp": "1:2",
-      "ep": 0.853,
+      "ep": 0.854,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.245,
@@ -80,7 +66,7 @@
       "home": "Werder Bremen",
       "away": "Paderborn",
       "tipp": "1:0",
-      "ep": 1.583,
+      "ep": 1.582,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.53,
