@@ -1,23 +1,9 @@
 {
-  "stand": "2026-10-17T18:25:33.173773+02:00",
-  "stand_text": "17.10.2026, 18:25",
+  "stand": "2026-10-17T18:30:47.854010+02:00",
+  "stand_text": "17.10.2026, 18:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-10-17T18:30:00+02:00",
-      "anstoss_text": "Sa 17.10. 18:30",
-      "home": "Bayern Munich",
-      "away": "RB Leipzig",
-      "tipp": "3:1",
-      "ep": 1.047,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.774,
-      "p_remis": 0.126,
-      "p_aus": 0.1,
-      "p_exakt": 0.08
-    },
     {
       "anstoss": "2026-10-18T15:30:00+02:00",
       "anstoss_text": "So 18.10. 15:30",
