@@ -1,22 +1,7 @@
 {
-  "stand": "2026-10-18T17:25:29.595979+02:00",
-  "stand_text": "18.10.2026, 17:25",
+  "stand": "2026-10-18T17:30:49.878467+02:00",
+  "stand_text": "18.10.2026, 17:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
-  "spiele": [
-    {
-      "anstoss": "2026-10-18T17:30:00+02:00",
-      "anstoss_text": "So 18.10. 17:30",
-      "home": "M'gladbach",
-      "away": "Hoffenheim",
-      "tipp": "1:2",
-      "ep": 0.795,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.306,
-      "p_remis": 0.237,
-      "p_aus": 0.457,
-      "p_exakt": 0.102
-    }
-  ]
+  "spiele": []
 }
