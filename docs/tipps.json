@@ -1,23 +1,9 @@
 {
-  "stand": "2026-10-18T15:25:35.987711+02:00",
-  "stand_text": "18.10.2026, 15:25",
+  "stand": "2026-10-18T15:30:49.283595+02:00",
+  "stand_text": "18.10.2026, 15:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-10-18T15:30:00+02:00",
-      "anstoss_text": "So 18.10. 15:30",
-      "home": "Leverkusen",
-      "away": "Freiburg",
-      "tipp": "2:1",
-      "ep": 0.836,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.549,
-      "p_remis": 0.226,
-      "p_aus": 0.225,
-      "p_exakt": 0.087
-    },
     {
       "anstoss": "2026-10-18T17:30:00+02:00",
       "anstoss_text": "So 18.10. 17:30",
