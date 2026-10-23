@@ -1,6 +1,5 @@
 {
   "gesendet": {
-    "2026-10-09|Dortmund|Werder Bremen": true,
     "2026-10-10|Augsburg|Bayern Munich": true,
     "2026-10-10|Hoffenheim|Hamburg": true,
     "2026-10-10|Mainz|Leverkusen": true,
@@ -21,7 +20,6 @@
     "2026-10-23|Stuttgart|M'gladbach": true
   },
   "frueh_gesendet": {
-    "2026-10-09": true,
     "2026-10-10": true,
     "2026-10-11": true,
     "2026-10-16": true,
