@@ -17,7 +17,12 @@
     "2026-10-17|Bayern Munich|RB Leipzig": true,
     "2026-10-18|Leverkusen|Freiburg": true,
     "2026-10-18|M'gladbach|Hoffenheim": true,
-    "2026-10-23|Stuttgart|M'gladbach": true
+    "2026-10-23|Stuttgart|M'gladbach": true,
+    "2026-10-24|Augsburg|Union Berlin": true,
+    "2026-10-24|FC Koln|Schalke 04": true,
+    "2026-10-24|Mainz|Werder Bremen": true,
+    "2026-10-24|Paderborn|Hamburg": true,
+    "2026-10-24|RB Leipzig|Elversberg": true
   },
   "frueh_gesendet": {
     "2026-10-10": true,
