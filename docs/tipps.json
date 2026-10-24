@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-24T04:20:35.173018+02:00",
-  "stand_text": "24.10.2026, 04:20",
+  "stand": "2026-10-24T04:25:43.260353+02:00",
+  "stand_text": "24.10.2026, 04:25",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -10,7 +10,7 @@
       "home": "Augsburg",
       "away": "Union Berlin",
       "tipp": "2:1",
-      "ep": 0.854,
+      "ep": 0.855,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.509,
@@ -52,7 +52,7 @@
       "home": "Paderborn",
       "away": "Hamburg",
       "tipp": "1:0",
-      "ep": 1.263,
+      "ep": 1.262,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.422,
@@ -66,13 +66,13 @@
       "home": "RB Leipzig",
       "away": "Elversberg",
       "tipp": "3:2",
-      "ep": 1.018,
+      "ep": 1.016,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.663,
       "p_remis": 0.182,
       "p_aus": 0.155,
-      "p_exakt": 0.089
+      "p_exakt": 0.088
     },
     {
       "anstoss": "2026-10-24T18:30:00+02:00",
@@ -80,7 +80,7 @@
       "home": "Dortmund",
       "away": "Ein Frankfurt",
       "tipp": "2:1",
-      "ep": 0.915,
+      "ep": 0.916,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.645,
