@@ -1,23 +1,9 @@
 {
-  "stand": "2026-10-24T18:25:34.241894+02:00",
-  "stand_text": "24.10.2026, 18:25",
+  "stand": "2026-10-24T18:30:47.283048+02:00",
+  "stand_text": "24.10.2026, 18:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-10-24T18:30:00+02:00",
-      "anstoss_text": "Sa 24.10. 18:30",
-      "home": "Dortmund",
-      "away": "Ein Frankfurt",
-      "tipp": "2:1",
-      "ep": 0.916,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.645,
-      "p_remis": 0.189,
-      "p_aus": 0.165,
-      "p_exakt": 0.082
-    },
     {
       "anstoss": "2026-10-25T15:30:00+01:00",
       "anstoss_text": "So 25.10. 15:30",
