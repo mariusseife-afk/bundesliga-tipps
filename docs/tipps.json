@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-24T18:15:41.999107+02:00",
-  "stand_text": "24.10.2026, 18:15",
+  "stand": "2026-10-24T18:20:33.604721+02:00",
+  "stand_text": "24.10.2026, 18:20",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -10,7 +10,7 @@
       "home": "Dortmund",
       "away": "Ein Frankfurt",
       "tipp": "2:1",
-      "ep": 0.916,
+      "ep": 0.915,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.645,
