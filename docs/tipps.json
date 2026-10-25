@@ -1,22 +1,7 @@
 {
-  "stand": "2026-10-25T17:25:40.114284+01:00",
-  "stand_text": "25.10.2026, 17:25",
+  "stand": "2026-10-25T17:30:55.516411+01:00",
+  "stand_text": "25.10.2026, 17:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
-  "spiele": [
-    {
-      "anstoss": "2026-10-25T17:30:00+01:00",
-      "anstoss_text": "So 25.10. 17:30",
-      "home": "Freiburg",
-      "away": "Bayern Munich",
-      "tipp": "1:3",
-      "ep": 0.945,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.146,
-      "p_remis": 0.165,
-      "p_aus": 0.689,
-      "p_exakt": 0.075
-    }
-  ]
+  "spiele": []
 }
