@@ -1,23 +1,9 @@
 {
-  "stand": "2026-10-25T15:25:34.441641+01:00",
-  "stand_text": "25.10.2026, 15:25",
+  "stand": "2026-10-25T15:30:50.154972+01:00",
+  "stand_text": "25.10.2026, 15:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-10-25T15:30:00+01:00",
-      "anstoss_text": "So 25.10. 15:30",
-      "home": "Hoffenheim",
-      "away": "Leverkusen",
-      "tipp": "1:2",
-      "ep": 0.67,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.346,
-      "p_remis": 0.244,
-      "p_aus": 0.411,
-      "p_exakt": 0.078
-    },
     {
       "anstoss": "2026-10-25T17:30:00+01:00",
       "anstoss_text": "So 25.10. 17:30",
