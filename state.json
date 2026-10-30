@@ -1,6 +1,5 @@
 {
   "gesendet": {
-    "2026-10-16|Ein Frankfurt|FC Koln": true,
     "2026-10-17|Elversberg|Augsburg": true,
     "2026-10-17|Hamburg|Stuttgart": true,
     "2026-10-17|Schalke 04|Mainz": true,
@@ -21,7 +20,6 @@
     "2026-10-30|Elversberg|Mainz": true
   },
   "frueh_gesendet": {
-    "2026-10-16": true,
     "2026-10-17": true,
     "2026-10-18": true,
     "2026-10-23": true,
