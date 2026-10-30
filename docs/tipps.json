@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-30T14:30:53.825249+01:00",
-  "stand_text": "30.10.2026, 14:30",
+  "stand": "2026-10-30T14:35:36.059300+01:00",
+  "stand_text": "30.10.2026, 14:35",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -10,7 +10,7 @@
       "home": "Elversberg",
       "away": "Mainz",
       "tipp": "1:2",
-      "ep": 0.821,
+      "ep": 0.823,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.304,
@@ -66,13 +66,13 @@
       "home": "Schalke 04",
       "away": "RB Leipzig",
       "tipp": "0:3",
-      "ep": 0.738,
+      "ep": 0.739,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.248,
       "p_remis": 0.243,
       "p_aus": 0.509,
-      "p_exakt": 0.113
+      "p_exakt": 0.114
     },
     {
       "anstoss": "2026-10-31T15:30:00+01:00",
