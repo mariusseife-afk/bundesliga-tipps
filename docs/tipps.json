@@ -1,23 +1,9 @@
 {
-  "stand": "2026-10-30T20:25:37.843130+01:00",
-  "stand_text": "30.10.2026, 20:25",
+  "stand": "2026-10-30T20:30:56.741881+01:00",
+  "stand_text": "30.10.2026, 20:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-10-30T20:30:00+01:00",
-      "anstoss_text": "Fr 30.10. 20:30",
-      "home": "Elversberg",
-      "away": "Mainz",
-      "tipp": "1:2",
-      "ep": 0.821,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.304,
-      "p_remis": 0.246,
-      "p_aus": 0.45,
-      "p_exakt": 0.105
-    },
     {
       "anstoss": "2026-10-31T15:30:00+01:00",
       "anstoss_text": "Sa 31.10. 15:30",
