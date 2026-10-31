@@ -17,7 +17,12 @@
     "2026-10-24|Dortmund|Ein Frankfurt": true,
     "2026-10-25|Hoffenheim|Leverkusen": true,
     "2026-10-25|Freiburg|Bayern Munich": true,
-    "2026-10-30|Elversberg|Mainz": true
+    "2026-10-30|Elversberg|Mainz": true,
+    "2026-10-31|Augsburg|Freiburg": true,
+    "2026-10-31|Leverkusen|Stuttgart": true,
+    "2026-10-31|M'gladbach|Paderborn": true,
+    "2026-10-31|Schalke 04|RB Leipzig": true,
+    "2026-10-31|Werder Bremen|Hoffenheim": true
   },
   "frueh_gesendet": {
     "2026-10-17": true,
