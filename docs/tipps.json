@@ -1,6 +1,6 @@
 {
-  "stand": "2026-10-31T06:20:35.809482+01:00",
-  "stand_text": "31.10.2026, 06:20",
+  "stand": "2026-10-31T06:25:34.576094+01:00",
+  "stand_text": "31.10.2026, 06:25",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -52,13 +52,13 @@
       "home": "Schalke 04",
       "away": "RB Leipzig",
       "tipp": "0:3",
-      "ep": 0.739,
+      "ep": 0.738,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.248,
       "p_remis": 0.243,
       "p_aus": 0.509,
-      "p_exakt": 0.114
+      "p_exakt": 0.113
     },
     {
       "anstoss": "2026-10-31T15:30:00+01:00",
