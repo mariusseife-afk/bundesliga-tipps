@@ -1,11 +1,5 @@
 {
   "gesendet": {
-    "2026-10-17|Elversberg|Augsburg": true,
-    "2026-10-17|Hamburg|Stuttgart": true,
-    "2026-10-17|Schalke 04|Mainz": true,
-    "2026-10-17|Union Berlin|Dortmund": true,
-    "2026-10-17|Werder Bremen|Paderborn": true,
-    "2026-10-17|Bayern Munich|RB Leipzig": true,
     "2026-10-18|Leverkusen|Freiburg": true,
     "2026-10-18|M'gladbach|Hoffenheim": true,
     "2026-10-23|Stuttgart|M'gladbach": true,
@@ -26,7 +20,6 @@
     "2026-10-31|Bayern Munich|Dortmund": true
   },
   "frueh_gesendet": {
-    "2026-10-17": true,
     "2026-10-18": true,
     "2026-10-23": true,
     "2026-10-24": true,
