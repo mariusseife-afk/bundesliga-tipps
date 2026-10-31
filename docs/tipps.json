@@ -1,23 +1,9 @@
 {
-  "stand": "2026-10-31T18:25:38.141224+01:00",
-  "stand_text": "31.10.2026, 18:25",
+  "stand": "2026-10-31T18:30:50.754364+01:00",
+  "stand_text": "31.10.2026, 18:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-10-31T18:30:00+01:00",
-      "anstoss_text": "Sa 31.10. 18:30",
-      "home": "Bayern Munich",
-      "away": "Dortmund",
-      "tipp": "2:1",
-      "ep": 1.065,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.709,
-      "p_remis": 0.163,
-      "p_aus": 0.129,
-      "p_exakt": 0.108
-    },
     {
       "anstoss": "2026-11-01T15:30:00+01:00",
       "anstoss_text": "So 01.11. 15:30",
