@@ -1,23 +1,9 @@
 {
-  "stand": "2026-11-01T15:25:36.656900+01:00",
-  "stand_text": "01.11.2026, 15:25",
+  "stand": "2026-11-01T15:30:48.221374+01:00",
+  "stand_text": "01.11.2026, 15:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-11-01T15:30:00+01:00",
-      "anstoss_text": "So 01.11. 15:30",
-      "home": "Union Berlin",
-      "away": "FC Koln",
-      "tipp": "1:2",
-      "ep": 0.652,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.371,
-      "p_remis": 0.26,
-      "p_aus": 0.369,
-      "p_exakt": 0.086
-    },
     {
       "anstoss": "2026-11-01T17:30:00+01:00",
       "anstoss_text": "So 01.11. 17:30",
