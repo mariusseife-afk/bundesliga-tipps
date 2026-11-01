@@ -1,22 +1,7 @@
 {
-  "stand": "2026-11-01T17:25:36.181670+01:00",
-  "stand_text": "01.11.2026, 17:25",
+  "stand": "2026-11-01T17:30:55.725153+01:00",
+  "stand_text": "01.11.2026, 17:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
-  "spiele": [
-    {
-      "anstoss": "2026-11-01T17:30:00+01:00",
-      "anstoss_text": "So 01.11. 17:30",
-      "home": "Ein Frankfurt",
-      "away": "Hamburg",
-      "tipp": "2:1",
-      "ep": 0.953,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.596,
-      "p_remis": 0.211,
-      "p_aus": 0.194,
-      "p_exakt": 0.108
-    }
-  ]
+  "spiele": []
 }
