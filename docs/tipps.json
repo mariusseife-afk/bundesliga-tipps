@@ -1,23 +1,9 @@
 {
-  "stand": "2026-11-06T20:25:36.783637+01:00",
-  "stand_text": "06.11.2026, 20:25",
+  "stand": "2026-11-06T20:30:55.169526+01:00",
+  "stand_text": "06.11.2026, 20:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-11-06T20:30:00+01:00",
-      "anstoss_text": "Fr 06.11. 20:30",
-      "home": "Hamburg",
-      "away": "M'gladbach",
-      "tipp": "1:0",
-      "ep": 0.745,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.403,
-      "p_remis": 0.263,
-      "p_aus": 0.334,
-      "p_exakt": 0.12
-    },
     {
       "anstoss": "2026-11-07T15:30:00+01:00",
       "anstoss_text": "Sa 07.11. 15:30",
