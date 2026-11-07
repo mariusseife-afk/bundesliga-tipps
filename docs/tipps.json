@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-07T21:55:33.582491+01:00",
-  "stand_text": "07.11.2026, 21:55",
+  "stand": "2026-11-07T22:00:57.261574+01:00",
+  "stand_text": "07.11.2026, 22:00",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -37,8 +37,8 @@
       "anstoss_text": "So 08.11. 19:30",
       "home": "Hoffenheim",
       "away": "Schalke 04",
-      "tipp": "3:0",
-      "ep": 0.828,
+      "tipp": "4:0",
+      "ep": 0.827,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.589,
