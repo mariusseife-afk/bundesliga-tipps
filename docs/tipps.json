@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-07T03:50:42.670151+01:00",
-  "stand_text": "07.11.2026, 03:50",
+  "stand": "2026-11-07T03:55:30.861747+01:00",
+  "stand_text": "07.11.2026, 03:55",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -10,13 +10,13 @@
       "home": "Dortmund",
       "away": "Elversberg",
       "tipp": "2:1",
-      "ep": 1.074,
+      "ep": 1.077,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.723,
       "p_remis": 0.162,
       "p_aus": 0.115,
-      "p_exakt": 0.099
+      "p_exakt": 0.1
     },
     {
       "anstoss": "2026-11-07T15:30:00+01:00",
@@ -38,7 +38,7 @@
       "home": "Paderborn",
       "away": "Ein Frankfurt",
       "tipp": "0:1",
-      "ep": 1.306,
+      "ep": 1.307,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.314,
@@ -107,8 +107,8 @@
       "anstoss_text": "So 08.11. 19:30",
       "home": "Hoffenheim",
       "away": "Schalke 04",
-      "tipp": "4:0",
-      "ep": 0.827,
+      "tipp": "3:0",
+      "ep": 0.828,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.589,
