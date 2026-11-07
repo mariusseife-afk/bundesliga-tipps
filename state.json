@@ -17,7 +17,11 @@
     "2026-10-31|Bayern Munich|Dortmund": true,
     "2026-11-01|Union Berlin|FC Koln": true,
     "2026-11-01|Ein Frankfurt|Hamburg": true,
-    "2026-11-06|Hamburg|M'gladbach": true
+    "2026-11-06|Hamburg|M'gladbach": true,
+    "2026-11-07|Dortmund|Elversberg": true,
+    "2026-11-07|Mainz|Bayern Munich": true,
+    "2026-11-07|Paderborn|Ein Frankfurt": true,
+    "2026-11-07|RB Leipzig|Augsburg": true
   },
   "frueh_gesendet": {
     "2026-10-24": true,
