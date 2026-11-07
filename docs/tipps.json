@@ -1,23 +1,9 @@
 {
-  "stand": "2026-11-07T18:25:35.833636+01:00",
-  "stand_text": "07.11.2026, 18:25",
+  "stand": "2026-11-07T18:30:46.753273+01:00",
+  "stand_text": "07.11.2026, 18:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-11-07T18:30:00+01:00",
-      "anstoss_text": "Sa 07.11. 18:30",
-      "home": "Stuttgart",
-      "away": "Werder Bremen",
-      "tipp": "2:0",
-      "ep": 0.804,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.571,
-      "p_remis": 0.209,
-      "p_aus": 0.22,
-      "p_exakt": 0.074
-    },
     {
       "anstoss": "2026-11-08T15:30:00+01:00",
       "anstoss_text": "So 08.11. 15:30",
@@ -51,8 +37,8 @@
       "anstoss_text": "So 08.11. 19:30",
       "home": "Hoffenheim",
       "away": "Schalke 04",
-      "tipp": "4:0",
-      "ep": 0.827,
+      "tipp": "3:0",
+      "ep": 0.828,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.589,
