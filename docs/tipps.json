@@ -1,23 +1,9 @@
 {
-  "stand": "2026-11-08T15:25:35.826114+01:00",
-  "stand_text": "08.11.2026, 15:25",
+  "stand": "2026-11-08T15:30:50.144240+01:00",
+  "stand_text": "08.11.2026, 15:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-11-08T15:30:00+01:00",
-      "anstoss_text": "So 08.11. 15:30",
-      "home": "FC Koln",
-      "away": "Leverkusen",
-      "tipp": "1:2",
-      "ep": 0.829,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.243,
-      "p_remis": 0.232,
-      "p_aus": 0.525,
-      "p_exakt": 0.092
-    },
     {
       "anstoss": "2026-11-08T17:30:00+01:00",
       "anstoss_text": "So 08.11. 17:30",
