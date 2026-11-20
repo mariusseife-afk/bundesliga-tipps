@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-20T23:50:47.078844+01:00",
-  "stand_text": "20.11.2026, 23:50",
+  "stand": "2026-11-20T23:55:37.872279+01:00",
+  "stand_text": "20.11.2026, 23:55",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -24,13 +24,13 @@
       "home": "Elversberg",
       "away": "Freiburg",
       "tipp": "2:3",
-      "ep": 0.83,
+      "ep": 0.831,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.275,
       "p_remis": 0.25,
       "p_aus": 0.475,
-      "p_exakt": 0.089
+      "p_exakt": 0.09
     },
     {
       "anstoss": "2026-11-21T15:30:00+01:00",
@@ -38,13 +38,13 @@
       "home": "Leverkusen",
       "away": "Paderborn",
       "tipp": "1:0",
-      "ep": 2.203,
+      "ep": 2.204,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.74,
       "p_remis": 0.153,
       "p_aus": 0.108,
-      "p_exakt": 0.731
+      "p_exakt": 0.732
     },
     {
       "anstoss": "2026-11-21T15:30:00+01:00",
@@ -52,7 +52,7 @@
       "home": "M'gladbach",
       "away": "Dortmund",
       "tipp": "0:1",
-      "ep": 1.001,
+      "ep": 1.0,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.186,
@@ -80,13 +80,13 @@
       "home": "Schalke 04",
       "away": "Stuttgart",
       "tipp": "0:3",
-      "ep": 0.745,
+      "ep": 0.747,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.24,
       "p_remis": 0.236,
       "p_aus": 0.524,
-      "p_exakt": 0.109
+      "p_exakt": 0.11
     },
     {
       "anstoss": "2026-11-22T15:30:00+01:00",
