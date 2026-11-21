@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-21T17:20:43.519016+01:00",
-  "stand_text": "21.11.2026, 17:20",
+  "stand": "2026-11-21T17:26:36.966396+01:00",
+  "stand_text": "21.11.2026, 17:26",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -10,13 +10,13 @@
       "home": "Schalke 04",
       "away": "Stuttgart",
       "tipp": "0:3",
-      "ep": 0.747,
+      "ep": 0.745,
       "quelle": "modell+markt",
       "hinweis": "",
       "p_heim": 0.24,
       "p_remis": 0.236,
       "p_aus": 0.524,
-      "p_exakt": 0.11
+      "p_exakt": 0.109
     },
     {
       "anstoss": "2026-11-22T15:30:00+01:00",
