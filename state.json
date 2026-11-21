@@ -8,7 +8,12 @@
     "2026-11-08|FC Koln|Leverkusen": true,
     "2026-11-08|Freiburg|Union Berlin": true,
     "2026-11-08|Hoffenheim|Schalke 04": true,
-    "2026-11-20|Bayern Munich|FC Koln": true
+    "2026-11-20|Bayern Munich|FC Koln": true,
+    "2026-11-21|Ein Frankfurt|Hoffenheim": true,
+    "2026-11-21|Elversberg|Freiburg": true,
+    "2026-11-21|Leverkusen|Paderborn": true,
+    "2026-11-21|M'gladbach|Dortmund": true,
+    "2026-11-21|Union Berlin|RB Leipzig": true
   },
   "frueh_gesendet": {
     "2026-11-07": true,
