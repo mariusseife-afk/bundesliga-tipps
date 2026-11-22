@@ -1,8 +1,5 @@
 {
   "gesendet": {
-    "2026-11-08|FC Koln|Leverkusen": true,
-    "2026-11-08|Freiburg|Union Berlin": true,
-    "2026-11-08|Hoffenheim|Schalke 04": true,
     "2026-11-20|Bayern Munich|FC Koln": true,
     "2026-11-21|Ein Frankfurt|Hoffenheim": true,
     "2026-11-21|Elversberg|Freiburg": true,
@@ -14,7 +11,6 @@
     "2026-11-22|Werder Bremen|Hamburg": true
   },
   "frueh_gesendet": {
-    "2026-11-08": true,
     "2026-11-20": true,
     "2026-11-21": true,
     "2026-11-22": true
