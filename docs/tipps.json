@@ -1,23 +1,9 @@
 {
-  "stand": "2026-11-22T15:25:33.487223+01:00",
-  "stand_text": "22.11.2026, 15:25",
+  "stand": "2026-11-22T15:30:53.421068+01:00",
+  "stand_text": "22.11.2026, 15:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-11-22T15:30:00+01:00",
-      "anstoss_text": "So 22.11. 15:30",
-      "home": "Augsburg",
-      "away": "Mainz",
-      "tipp": "0:1",
-      "ep": 0.72,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.354,
-      "p_remis": 0.247,
-      "p_aus": 0.399,
-      "p_exakt": 0.1
-    },
     {
       "anstoss": "2026-11-22T17:30:00+01:00",
       "anstoss_text": "So 22.11. 17:30",
