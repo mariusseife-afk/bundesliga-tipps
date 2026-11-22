@@ -1,22 +1,7 @@
 {
-  "stand": "2026-11-22T17:25:36.209376+01:00",
-  "stand_text": "22.11.2026, 17:25",
+  "stand": "2026-11-22T17:30:56.250012+01:00",
+  "stand_text": "22.11.2026, 17:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
-  "spiele": [
-    {
-      "anstoss": "2026-11-22T17:30:00+01:00",
-      "anstoss_text": "So 22.11. 17:30",
-      "home": "Werder Bremen",
-      "away": "Hamburg",
-      "tipp": "1:0",
-      "ep": 1.061,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.561,
-      "p_remis": 0.226,
-      "p_aus": 0.212,
-      "p_exakt": 0.173
-    }
-  ]
+  "spiele": []
 }
