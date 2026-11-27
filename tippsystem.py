@@ -73,6 +73,14 @@ def _lade_url(url, ziel, max_alter_stunden=None):
     return ziel
 
 
+def _lies_csv(pfad):
+    """Liest eine CSV robust (UTF-8 mit Fallback auf Latin-1)."""
+    try:
+        return pd.read_csv(pfad, encoding="utf-8-sig")
+    except UnicodeDecodeError:
+        return pd.read_csv(pfad, encoding="latin-1")
+
+
 def hole_historie(saisons=None, aktualisiere_laufende=True):
     """
     Laedt die Saison-CSVs (fehlende werden heruntergeladen) und gibt ein
@@ -100,7 +108,7 @@ def hole_historie(saisons=None, aktualisiere_laufende=True):
                 continue
             print(f"  Saison {s}: Aktualisierung fehlgeschlagen ({e}), nutze lokale Datei")
 
-        d = pd.read_csv(pfad, encoding="utf-8-sig")
+        d = _lies_csv(pfad)
         if "HomeTeam" not in d.columns:
             continue
         rahmen.append(pd.DataFrame({
@@ -138,7 +146,7 @@ def hole_spielplan(max_alter_stunden=0.4):
         if not os.path.exists(pfad):
             return pd.DataFrame()
 
-    d = pd.read_csv(pfad, encoding="utf-8-sig")
+    d = _lies_csv(pfad)
     if "Div" not in d.columns:
         return pd.DataFrame()
     d = d[d["Div"] == "D1"].copy()
@@ -206,6 +214,16 @@ _ODDS_API_TEAMS = {
     "holstein kiel": "Holstein Kiel",
     "hertha bsc": "Hertha",
     "sv darmstadt 98": "Darmstadt",
+    "1 fc kaiserslautern": "Kaiserslautern",
+    "hannover 96": "Hannover",
+    "fortuna dusseldorf": "Fortuna Dusseldorf",
+    "karlsruher sc": "Karlsruhe",
+    "1 fc magdeburg": "Magdeburg",
+    "1 fc nurnberg": "Nurnberg",
+    "spvgg greuther furth": "Greuther Furth",
+    "arminia bielefeld": "Bielefeld",
+    "eintracht braunschweig": "Braunschweig",
+    "preussen munster": "Preussen Munster",
 }
 
 
@@ -213,6 +231,15 @@ def _norm_team(name):
     s = unicodedata.normalize("NFKD", str(name)).encode("ascii", "ignore").decode("ascii")
     s = re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
     return _ODDS_API_TEAMS.get(s, s)
+
+
+def _team_passt(fd_norm, live_norm):
+    """Exakter Treffer oder eindeutiger Teilstring fuer zukuenftige Aufsteiger."""
+    if fd_norm == live_norm:
+        return True
+    if len(fd_norm) >= 4 and (fd_norm in live_norm or live_norm in fd_norm):
+        return True
+    return False
 
 
 def ergaenze_live_quoten(spielplan):
@@ -229,9 +256,11 @@ def ergaenze_live_quoten(spielplan):
         "https://api.the-odds-api.com/v4/sports/soccer_germany_bundesliga/odds/"
         f"?regions=eu&markets=h2h&oddsFormat=decimal&apiKey={api_key}"
     )
+    rest_quota = None
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=20) as r:
+            rest_quota = r.headers.get("x-requests-remaining")
             events = json.loads(r.read().decode("utf-8"))
     except Exception as e:
         # URL/Key niemals in Fehlermeldungen ausgeben
@@ -262,11 +291,18 @@ def ergaenze_live_quoten(spielplan):
     out = spielplan.copy()
     treffer = 0
     for idx, row in out.iterrows():
-        key = (_norm_team(row["home"]), _norm_team(row["away"]))
-        if key in live:
-            out.at[idx, "oh"], out.at[idx, "od"], out.at[idx, "oa"] = live[key]
+        fh, fa = _norm_team(row["home"]), _norm_team(row["away"])
+        gefunden = live.get((fh, fa))
+        if gefunden is None:
+            for (lh, la), quoten in live.items():
+                if _team_passt(fh, lh) and _team_passt(fa, la):
+                    gefunden = quoten
+                    break
+        if gefunden is not None:
+            out.at[idx, "oh"], out.at[idx, "od"], out.at[idx, "oa"] = gefunden
             treffer += 1
-    print(f"  Live-Quoten uebernommen fuer {treffer}/{len(out)} Spiele.")
+    zusatz = f" (Restkontingent: {rest_quota})" if rest_quota is not None else ""
+    print(f"  Live-Quoten uebernommen fuer {treffer}/{len(out)} Spiele{zusatz}.")
     return out
 
 
