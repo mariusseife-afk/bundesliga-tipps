@@ -72,12 +72,21 @@ def hole_befehle(offset):
 def formatiere(spiele, ueberschrift):
     """Baut die Telegram-Nachricht aus einer Tippliste."""
     zeilen = [f"<b>{ueberschrift}</b>", ""]
+    mit_tipp = [s for s in spiele if s.get("tipp")]
+    alle_fallback = bool(mit_tipp) and all(
+        s.get("quoten_quelle") == "football-data.co.uk" for s in mit_tipp
+    )
     for s in spiele:
         if not s.get("tipp"):
             zeilen.append(f"{s['home']} - {s['away']}: kein Tipp ({s.get('hinweis','')})")
             continue
         zeit = formatiere_zeit(s["anstoss"])
-        marke = "" if s["quelle"] == "modell+markt" else f"  [{s['quelle']}]"
+        marken = []
+        if s["quelle"] != "modell+markt":
+            marken.append(s["quelle"])
+        if not alle_fallback and s.get("quoten_quelle") == "football-data.co.uk":
+            marken.append("Quoten: football-data.co.uk")
+        marke = ("  [" + ", ".join(marken) + "]") if marken else ""
         zeilen.append(f"<code>{s['tipp']}</code>  {s['home']} - {s['away']}")
         zeilen.append(f"     {zeit} Uhr, EP {s['ep']:.2f}{marke}")
     if spiele:
@@ -85,4 +94,6 @@ def formatiere(spiele, ueberschrift):
         if ep:
             zeilen += ["", f"Erwartete Punkte gesamt: <b>{sum(ep):.1f}</b> "
                            f"aus {len(ep)} Spielen"]
+    if alle_fallback:
+        zeilen.append("<i>Hinweis: Quoten von football-data.co.uk (Fallback)</i>")
     return "\n".join(zeilen)

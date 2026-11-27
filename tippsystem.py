@@ -170,6 +170,7 @@ def hole_spielplan(max_alter_stunden=0.4):
         "oa": _spalte(d, ["AvgA", "B365A"]),
         "o25": _spalte(d, ["Avg>2.5", "B365>2.5"]),
         "u25": _spalte(d, ["Avg<2.5", "B365<2.5"]),
+        "quoten_quelle": "football-data.co.uk",
     })
     return out.dropna(subset=["anstoss"]).sort_values("anstoss").reset_index(drop=True)
 
@@ -300,6 +301,7 @@ def ergaenze_live_quoten(spielplan):
                     break
         if gefunden is not None:
             out.at[idx, "oh"], out.at[idx, "od"], out.at[idx, "oa"] = gefunden
+            out.at[idx, "quoten_quelle"] = "the-odds-api"
             treffer += 1
     zusatz = f" (Restkontingent: {rest_quota})" if rest_quota is not None else ""
     print(f"  Live-Quoten uebernommen fuer {treffer}/{len(out)} Spiele{zusatz}.")
