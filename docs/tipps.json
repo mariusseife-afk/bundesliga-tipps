@@ -1,23 +1,9 @@
 {
-  "stand": "2026-11-27T19:05:30.665727+01:00",
-  "stand_text": "27.11.2026, 19:05",
+  "stand": "2026-11-27T20:30:57.254310+01:00",
+  "stand_text": "27.11.2026, 20:30",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
-    {
-      "anstoss": "2026-11-27T20:30:00+01:00",
-      "anstoss_text": "Fr 27.11. 20:30",
-      "home": "Werder Bremen",
-      "away": "M'gladbach",
-      "tipp": "2:1",
-      "ep": 0.843,
-      "quelle": "modell+markt",
-      "hinweis": "",
-      "p_heim": 0.569,
-      "p_remis": 0.223,
-      "p_aus": 0.209,
-      "p_exakt": 0.081
-    },
     {
       "anstoss": "2026-11-28T15:30:00+01:00",
       "anstoss_text": "Sa 28.11. 15:30",
