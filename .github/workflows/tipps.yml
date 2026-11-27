@@ -40,6 +40,7 @@ jobs:
       - name: Tipps rechnen und verschicken
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python run.py
 
       - name: Geaenderten Stand zuruecklegen

@@ -12,7 +12,10 @@ Gemessen im Walk-Forward ueber 1129 Spiele (Saisons 21/22 bis 25/26):
 Alle Zahlen aus tatsaechlich ausgefuehrten Laeufen, nicht geschaetzt.
 """
 
+import json
 import os
+import re
+import unicodedata
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
@@ -49,8 +52,11 @@ def saison_code(d):
 
 
 def _lade_url(url, ziel, max_alter_stunden=None):
-    """Laedt url nach ziel. Ueberspringt, wenn die Datei jung genug ist."""
-    if max_alter_stunden is not None and os.path.exists(ziel):
+    """Laedt url nach ziel. Ueberspringt lokal, wenn die Datei jung genug ist."""
+    # In GitHub Actions setzt actions/checkout immer die aktuelle Zeit als mtime.
+    # Dort darf der lokale Dateialter-Cache nicht greifen, sonst veralten CSVs dauerhaft.
+    in_ci = os.environ.get("GITHUB_ACTIONS", "").lower() == "true"
+    if not in_ci and max_alter_stunden is not None and os.path.exists(ziel):
         alter = (datetime.now().timestamp() - os.path.getmtime(ziel)) / 3600
         if alter < max_alter_stunden:
             return ziel
@@ -58,6 +64,10 @@ def _lade_url(url, ziel, max_alter_stunden=None):
     with urllib.request.urlopen(req, timeout=30) as r:
         inhalt = r.read()
     os.makedirs(os.path.dirname(ziel), exist_ok=True)
+    if os.path.exists(ziel):
+        with open(ziel, "rb") as f:
+            if f.read() == inhalt:
+                return ziel
     with open(ziel, "wb") as f:
         f.write(inhalt)
     return ziel
@@ -154,6 +164,110 @@ def hole_spielplan(max_alter_stunden=0.4):
         "u25": _spalte(d, ["Avg<2.5", "B365<2.5"]),
     })
     return out.dropna(subset=["anstoss"]).sort_values("anstoss").reset_index(drop=True)
+
+
+# ---------------------------------------------------------------- Live-Quoten (optional)
+
+_ODDS_API_TEAMS = {
+    "bayern munich": "Bayern Munich",
+    "fc bayern munchen": "Bayern Munich",
+    "borussia dortmund": "Dortmund",
+    "eintracht frankfurt": "Ein Frankfurt",
+    "1 fc koln": "FC Koln",
+    "fc koln": "FC Koln",
+    "fc cologne": "FC Koln",
+    "borussia monchengladbach": "M'gladbach",
+    "fsv mainz 05": "Mainz",
+    "1 fsv mainz 05": "Mainz",
+    "sc freiburg": "Freiburg",
+    "bayer leverkusen": "Leverkusen",
+    "bayer 04 leverkusen": "Leverkusen",
+    "sv werder bremen": "Werder Bremen",
+    "werder bremen": "Werder Bremen",
+    "fc augsburg": "Augsburg",
+    "tsg hoffenheim": "Hoffenheim",
+    "tsg 1899 hoffenheim": "Hoffenheim",
+    "vfb stuttgart": "Stuttgart",
+    "vfl wolfsburg": "Wolfsburg",
+    "1 fc union berlin": "Union Berlin",
+    "union berlin": "Union Berlin",
+    "rb leipzig": "RB Leipzig",
+    "fc st pauli": "St Pauli",
+    "hamburger sv": "Hamburg",
+    "1 fc heidenheim": "Heidenheim",
+    "1 fc heidenheim 1846": "Heidenheim",
+    "sv elversberg": "Elversberg",
+    "sv 07 elversberg": "Elversberg",
+    "sc paderborn 07": "Paderborn",
+    "sc paderborn": "Paderborn",
+    "fc schalke 04": "Schalke 04",
+    "schalke 04": "Schalke 04",
+    "vfl bochum": "Bochum",
+    "holstein kiel": "Holstein Kiel",
+    "hertha bsc": "Hertha",
+    "sv darmstadt 98": "Darmstadt",
+}
+
+
+def _norm_team(name):
+    s = unicodedata.normalize("NFKD", str(name)).encode("ascii", "ignore").decode("ascii")
+    s = re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
+    return _ODDS_API_TEAMS.get(s, s)
+
+
+def ergaenze_live_quoten(spielplan):
+    """
+    Optional: ueberschreibt 1X2-Quoten mit frischen Live-Quoten von The Odds API,
+    sofern die Umgebungsvariable ODDS_API_KEY gesetzt ist. Bei fehlendem Key oder
+    Fehler bleiben die bestehenden Quoten aus fixtures.csv unveraendert.
+    """
+    api_key = os.environ.get("ODDS_API_KEY", "").strip()
+    if not api_key or spielplan.empty:
+        return spielplan
+
+    url = (
+        "https://api.the-odds-api.com/v4/sports/soccer_germany_bundesliga/odds/"
+        f"?regions=eu&markets=h2h&oddsFormat=decimal&apiKey={api_key}"
+    )
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            events = json.loads(r.read().decode("utf-8"))
+    except Exception as e:
+        # URL/Key niemals in Fehlermeldungen ausgeben
+        print(f"  Live-Quoten nicht abrufbar ({type(e).__name__}) - nutze fixtures.csv")
+        return spielplan
+
+    live = {}
+    for ev in events:
+        h_raw, a_raw = ev.get("home_team", ""), ev.get("away_team", "")
+        h_key, a_key = _norm_team(h_raw), _norm_team(a_raw)
+        qh, qd, qa = [], [], []
+        for bm in ev.get("bookmakers", []):
+            for mk in bm.get("markets", []):
+                if mk.get("key") != "h2h":
+                    continue
+                by_name = {o.get("name"): o.get("price") for o in mk.get("outcomes", [])}
+                ph, pd_, pa = by_name.get(h_raw), by_name.get("Draw"), by_name.get(a_raw)
+                if ph and pd_ and pa and ph > 1.0 and pd_ > 1.0 and pa > 1.0:
+                    qh.append(float(ph))
+                    qd.append(float(pd_))
+                    qa.append(float(pa))
+        if qh:
+            live[(h_key, a_key)] = (float(np.mean(qh)), float(np.mean(qd)), float(np.mean(qa)))
+
+    if not live:
+        return spielplan
+
+    out = spielplan.copy()
+    treffer = 0
+    for idx, row in out.iterrows():
+        key = (_norm_team(row["home"]), _norm_team(row["away"]))
+        if key in live:
+            out.at[idx, "oh"], out.at[idx, "od"], out.at[idx, "oa"] = live[key]
+            treffer += 1
+    print(f"  Live-Quoten uebernommen fuer {treffer}/{len(out)} Spiele.")
+    return out
 
 
 # ---------------------------------------------------------------- Markt

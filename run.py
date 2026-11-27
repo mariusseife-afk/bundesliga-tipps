@@ -30,12 +30,19 @@ Aufruf:
 import json
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 import notify
 import page
-from tippsystem import formatiere_zeit, hole_historie, hole_spielplan, spiel_id, tippe
+from tippsystem import (
+    ergaenze_live_quoten,
+    formatiere_zeit,
+    hole_historie,
+    hole_spielplan,
+    spiel_id,
+    tippe,
+)
 
 HIER = os.path.dirname(os.path.abspath(__file__))
 CONFIG = os.path.join(HIER, "config.json")
@@ -195,12 +202,32 @@ def faellige(spiele, cfg, state, jetzt):
     kommend = [s for s in spiele if s["anstoss"] > jetzt]
 
     frueh = []
+    runde = None
     if kommend:
-        erster_anstoss = min(s["anstoss"] for s in kommend)
+        erstes_spiel = min(kommend, key=lambda s: s["anstoss"])
+        erster_anstoss = erstes_spiel["anstoss"]
         runde = erster_anstoss.date().isoformat()
         frueh_gesendet = state.setdefault("frueh_gesendet", {})
         schwelle_frueh = timedelta(hours=float(cfg.get("vorlauf_frueh_stunden", 8.0)))
-        if not frueh_gesendet.get(runde) and jetzt >= erster_anstoss - schwelle_frueh:
+
+        # Pruefen, ob dieses Spiel schon durch eine fruehere Spieltags-Uebersicht
+        # abgedeckt ist (verhindert doppelte Uebersichten am Sa/So nach dem Fr-Spiel).
+        bereits_abgedeckt = bool(
+            frueh_gesendet.get(spiel_id(erstes_spiel))
+            or frueh_gesendet.get(runde)
+        )
+        if not bereits_abgedeckt:
+            for k, v in frueh_gesendet.items():
+                if v and len(k) == 10:
+                    try:
+                        abstand = (erster_anstoss.date() - date.fromisoformat(k)).days
+                        if 0 <= abstand <= 3:
+                            bereits_abgedeckt = True
+                            break
+                    except ValueError:
+                        pass
+
+        if not bereits_abgedeckt and jetzt >= erster_anstoss - schwelle_frueh:
             grenze = erster_anstoss + RUNDEN_FENSTER
             frueh = [s for s in kommend if s["anstoss"] <= grenze]
 
@@ -209,7 +236,7 @@ def faellige(spiele, cfg, state, jetzt):
     spaet = [s for s in kommend
              if not gesendet.get(spiel_id(s)) and (s["anstoss"] - jetzt) <= schwelle_spaet]
 
-    return frueh, spaet, (runde if kommend else None)
+    return frueh, spaet, runde
 
 
 # ---------------------------------------------------------------- Hauptlauf
@@ -239,18 +266,14 @@ def main():
     spielplan = hole_spielplan()
     if spielplan.empty:
         print("  Keine Bundesligaspiele im Vorschau-Feed.")
+        kommend_df = spielplan
         spiele = []
     else:
-        kommend = spielplan[[a > jetzt for a in spielplan["anstoss"]]]
-        print(f"  {len(kommend)} kommende Spiele, naechster Anstoss "
-              f"{kommend['anstoss'].iloc[0]:%d.%m. %H:%M}" if len(kommend) else
+        kommend_df = spielplan[[a > jetzt for a in spielplan["anstoss"]]]
+        print(f"  {len(kommend_df)} kommende Spiele, naechster Anstoss "
+              f"{kommend_df['anstoss'].iloc[0]:%d.%m. %H:%M}" if len(kommend_df) else
               "  Keine kommenden Spiele.")
-        spiele = tippe(historie, kommend) if len(kommend) else []
-
-    for s in spiele:
-        print(f"    {formatiere_zeit(s['anstoss'])}  {s['home']:<16} - "
-              f"{s['away']:<16}  {s.get('tipp') or '--':>4}  "
-              f"EP {s.get('ep') or 0:.2f}  [{s['quelle']}]")
+        spiele = tippe(historie, kommend_df) if len(kommend_df) else []
 
     manuell = bool(cfg.get("sofort_senden"))
     if cfg.get("geplant_fuer"):
@@ -266,6 +289,22 @@ def main():
     else:
         anstehend = []
         frueh, spaet, runde = faellige(spiele, cfg, state, jetzt) if spiele else ([], [], None)
+
+    # Optional: Live-Quoten nur abrufen, wenn wirklich etwas gesendet wird
+    # (schont das kostenlose 500-Requests/Monat-Limit von The Odds API).
+    if not probe and not nur_seite and len(kommend_df) and (manuell or frueh or spaet):
+        if os.environ.get("ODDS_API_KEY", "").strip():
+            kommend_live = ergaenze_live_quoten(kommend_df)
+            spiele = tippe(historie, kommend_live)
+            if manuell:
+                anstehend = [s for s in spiele if s["anstoss"] > jetzt]
+            else:
+                frueh, spaet, runde = faellige(spiele, cfg, state, jetzt)
+
+    for s in spiele:
+        print(f"    {formatiere_zeit(s['anstoss'])}  {s['home']:<16} - "
+              f"{s['away']:<16}  {s.get('tipp') or '--':>4}  "
+              f"EP {s.get('ep') or 0:.2f}  [{s['quelle']}]")
 
     if probe:
         print(f"\n  Probelauf: manuell={manuell}, fruehzeitig={len(frueh)}, "
@@ -288,7 +327,11 @@ def main():
             if frueh:
                 titel = "Bundesliga - Tipps zum Spieltag"
                 if notify.sende(notify.formatiere(frueh, titel), chat):
-                    state.setdefault("frueh_gesendet", {})[runde] = True
+                    fg = state.setdefault("frueh_gesendet", {})
+                    if runde:
+                        fg[runde] = True
+                    for s in frueh:
+                        fg[spiel_id(s)] = True
                     print(f"\n  Fruehzeitige Uebersicht geschickt ({len(frueh)} Spiele).")
                 else:
                     print("\n  Fruehzeitige Uebersicht fehlgeschlagen - bleibt faellig.")
@@ -308,23 +351,41 @@ def main():
         state["gesendet"] = {k: v for k, v in state.get("gesendet", {}).items()
                              if k[:10] >= grenze}
         state["frueh_gesendet"] = {k: v for k, v in state.get("frueh_gesendet", {}).items()
-                                   if k >= grenze}
+                                   if k[:10] >= grenze}
         schreibe(CONFIG, cfg)
         schreibe(STATE, state)
 
+    # Webseite nur neu schreiben, wenn sich Inhalt (abseits des Zeitstempels) geaendert hat.
+    # Verhindert unnoetige Commits bei jedem 5-Minuten-Cronlauf.
     os.makedirs(DOCS, exist_ok=True)
-    with open(SEITE, "w", encoding="utf-8") as f:
-        f.write(page.baue(spiele, cfg, jetzt))
-    schreibe(DATEN_JSON, page.daten(spiele, cfg, jetzt))
-    with open(SEITE_LIVE, "w", encoding="utf-8") as f:
-        f.write(page.baue_live(cfg))
-    print(f"  Seite geschrieben: {SEITE}")
-    print(f"  Daten geschrieben: {DATEN_JSON}")
-    if page.json_url(cfg):
-        print(f"  Sites-Seite:       {SEITE_LIVE} (laedt von {page.json_url(cfg)})")
+    neue_daten = page.daten(spiele, cfg, jetzt)
+
+    def _ohne_stand(d):
+        return {k: v for k, v in d.items() if k not in ("stand", "stand_text")}
+
+    inhalt_geaendert = nur_seite or not (os.path.exists(SEITE) and os.path.exists(DATEN_JSON))
+    if not inhalt_geaendert:
+        try:
+            with open(DATEN_JSON, encoding="utf-8") as f:
+                alte_daten = json.load(f)
+            inhalt_geaendert = _ohne_stand(alte_daten) != _ohne_stand(neue_daten)
+        except Exception:
+            inhalt_geaendert = True
+
+    if inhalt_geaendert:
+        with open(SEITE, "w", encoding="utf-8") as f:
+            f.write(page.baue(spiele, cfg, jetzt))
+        schreibe(DATEN_JSON, neue_daten)
+        print(f"  Seite aktualisiert: {SEITE}")
+        print(f"  Daten aktualisiert: {DATEN_JSON}")
     else:
-        print(f"  Sites-Seite:       {SEITE_LIVE} "
-              f"(github_repo in config.json noch leer)")
+        print("  Seite unveraendert (kein neuer Commit noetig).")
+
+    live_html = page.baue_live(cfg)
+    if not os.path.exists(SEITE_LIVE) or open(SEITE_LIVE, encoding="utf-8").read() != live_html:
+        with open(SEITE_LIVE, "w", encoding="utf-8") as f:
+            f.write(live_html)
+        print(f"  Sites-Seite aktualisiert: {SEITE_LIVE}")
 
 
 if __name__ == "__main__":
