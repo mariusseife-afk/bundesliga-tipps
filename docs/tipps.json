@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-27T21:45:41.444517+01:00",
-  "stand_text": "27.11.2026, 21:45",
+  "stand": "2026-11-28T14:01:10.575581+01:00",
+  "stand_text": "28.11.2026, 14:01",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -10,13 +10,13 @@
       "home": "FC Koln",
       "away": "Elversberg",
       "tipp": "2:1",
-      "ep": 0.821,
+      "ep": 0.838,
       "quelle": "modell+markt",
       "hinweis": "",
-      "p_heim": 0.473,
-      "p_remis": 0.252,
-      "p_aus": 0.275,
-      "p_exakt": 0.102
+      "p_heim": 0.483,
+      "p_remis": 0.251,
+      "p_aus": 0.267,
+      "p_exakt": 0.104
     },
     {
       "anstoss": "2026-11-28T15:30:00+01:00",

@@ -9,7 +9,11 @@
     "2026-11-21|Schalke 04|Stuttgart": true,
     "2026-11-22|Augsburg|Mainz": true,
     "2026-11-22|Werder Bremen|Hamburg": true,
-    "2026-11-27|Werder Bremen|M'gladbach": true
+    "2026-11-27|Werder Bremen|M'gladbach": true,
+    "2026-11-28|FC Koln|Elversberg": true,
+    "2026-11-28|Hamburg|Bayern Munich": true,
+    "2026-11-28|Mainz|Union Berlin": true,
+    "2026-11-28|Paderborn|Schalke 04": true
   },
   "frueh_gesendet": {
     "2026-11-20": true,
