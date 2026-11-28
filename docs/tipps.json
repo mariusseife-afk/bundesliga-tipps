@@ -1,6 +1,6 @@
 {
-  "stand": "2026-11-28T15:20:48.596597+01:00",
-  "stand_text": "28.11.2026, 15:20",
+  "stand": "2026-11-28T15:25:33.793039+01:00",
+  "stand_text": "28.11.2026, 15:25",
   "telegram_bot": "paul_bundesliga_bot",
   "geplant_fuer": null,
   "spiele": [
@@ -10,12 +10,12 @@
       "home": "FC Koln",
       "away": "Elversberg",
       "tipp": "2:1",
-      "ep": 0.826,
+      "ep": 0.822,
       "quelle": "modell+markt",
       "hinweis": "",
-      "p_heim": 0.476,
+      "p_heim": 0.473,
       "p_remis": 0.255,
-      "p_aus": 0.269,
+      "p_aus": 0.271,
       "p_exakt": 0.102
     },
     {
@@ -24,13 +24,13 @@
       "home": "Hamburg",
       "away": "Bayern Munich",
       "tipp": "1:3",
-      "ep": 1.012,
+      "ep": 0.926,
       "quelle": "modell+markt",
       "hinweis": "",
-      "p_heim": 0.101,
-      "p_remis": 0.146,
-      "p_aus": 0.753,
-      "p_exakt": 0.075
+      "p_heim": 0.134,
+      "p_remis": 0.178,
+      "p_aus": 0.689,
+      "p_exakt": 0.069
     },
     {
       "anstoss": "2026-11-28T15:30:00+01:00",
@@ -38,27 +38,27 @@
       "home": "Mainz",
       "away": "Union Berlin",
       "tipp": "2:1",
-      "ep": 0.937,
+      "ep": 0.984,
       "quelle": "modell+markt",
       "hinweis": "",
-      "p_heim": 0.629,
-      "p_remis": 0.207,
-      "p_aus": 0.164,
-      "p_exakt": 0.092
+      "p_heim": 0.66,
+      "p_remis": 0.196,
+      "p_aus": 0.144,
+      "p_exakt": 0.096
     },
     {
       "anstoss": "2026-11-28T15:30:00+01:00",
       "anstoss_text": "Sa 28.11. 15:30",
       "home": "Paderborn",
       "away": "Schalke 04",
-      "tipp": "1:0",
-      "ep": 0.916,
+      "tipp": "0:1",
+      "ep": 0.991,
       "quelle": "modell+markt",
       "hinweis": "",
-      "p_heim": 0.373,
-      "p_remis": 0.276,
-      "p_aus": 0.351,
-      "p_exakt": 0.258
+      "p_heim": 0.351,
+      "p_remis": 0.268,
+      "p_aus": 0.381,
+      "p_exakt": 0.291
     },
     {
       "anstoss": "2026-11-28T18:30:00+01:00",
@@ -66,13 +66,13 @@
       "home": "Stuttgart",
       "away": "Ein Frankfurt",
       "tipp": "2:1",
-      "ep": 0.76,
+      "ep": 0.773,
       "quelle": "modell+markt",
       "hinweis": "",
-      "p_heim": 0.521,
-      "p_remis": 0.214,
-      "p_aus": 0.265,
-      "p_exakt": 0.071
+      "p_heim": 0.53,
+      "p_remis": 0.216,
+      "p_aus": 0.254,
+      "p_exakt": 0.072
     },
     {
       "anstoss": "2026-11-29T15:30:00+01:00",
@@ -80,12 +80,12 @@
       "home": "Freiburg",
       "away": "RB Leipzig",
       "tipp": "1:2",
-      "ep": 0.681,
+      "ep": 0.679,
       "quelle": "modell+markt",
       "hinweis": "",
-      "p_heim": 0.352,
-      "p_remis": 0.249,
-      "p_aus": 0.4,
+      "p_heim": 0.353,
+      "p_remis": 0.248,
+      "p_aus": 0.399,
       "p_exakt": 0.083
     },
     {
@@ -94,13 +94,13 @@
       "home": "Hoffenheim",
       "away": "Augsburg",
       "tipp": "2:1",
-      "ep": 0.857,
+      "ep": 0.868,
       "quelle": "modell+markt",
       "hinweis": "",
-      "p_heim": 0.55,
-      "p_remis": 0.212,
-      "p_aus": 0.238,
-      "p_exakt": 0.088
+      "p_heim": 0.557,
+      "p_remis": 0.209,
+      "p_aus": 0.234,
+      "p_exakt": 0.089
     },
     {
       "anstoss": "2026-11-29T19:30:00+01:00",
@@ -108,13 +108,13 @@
       "home": "Dortmund",
       "away": "Leverkusen",
       "tipp": "1:0",
-      "ep": 0.707,
+      "ep": 0.708,
       "quelle": "modell+markt",
       "hinweis": "",
-      "p_heim": 0.447,
-      "p_remis": 0.241,
-      "p_aus": 0.311,
-      "p_exakt": 0.08
+      "p_heim": 0.448,
+      "p_remis": 0.243,
+      "p_aus": 0.309,
+      "p_exakt": 0.081
     }
   ]
 }
